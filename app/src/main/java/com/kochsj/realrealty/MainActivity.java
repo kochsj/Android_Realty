@@ -22,8 +22,4 @@ public class MainActivity extends AppCompatActivity {
 //        searchView.setAdapter(adapter);
     }
 
-
-
-
-
 }
