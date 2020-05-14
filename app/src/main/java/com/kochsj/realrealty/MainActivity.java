@@ -1,9 +1,9 @@
 package com.kochsj.realrealty;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,12 +12,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // intent is to render a map...
-//        Intent intent = new Intent(this, MapsActivity.class);
-//        startActivity(intent);
+//        User user = new User("Baba", "San");
+//         intent is to render a map...
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+//        ViewPager searchView = findViewById(R.id.center_view);
+//        ProfilePageAdapter adapter = new ProfilePageAdapter(user, this);
+//
+//        searchView.setAdapter(adapter);
     }
 
-    ViewPager searchView = findViewById(R.id.center_view);
+
+
 
 
 }
