@@ -1,6 +1,7 @@
 package com.kochsj.realrealty;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -20,14 +21,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_maps);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
     }
-
 
     /**
      * Manipulates the map once available.
@@ -42,6 +44,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapStyle(new MapStyleOptions(getResources().getString(R.string.style_json)));
+        Log.d("ON MAP READYYYYYYYYYYY", "i am here? xxxxxxxxxxxxxxxxxxxxx");
 
         LatLng seattle = new LatLng(47.6, -122.3);
         float zoom = 12.0f;
@@ -50,4 +53,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(seattle).title("Marker in Seattle"));
         mMap.animateCamera(cameraUpdate);
     }
+
 }
+
+
