@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "846848308336",
+    "firebase_url": "https://realrealty-ad652.firebaseio.com",
+    "project_id": "realrealty-ad652",
+    "storage_bucket": "realrealty-ad652.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846848308336:android:a5c76b1e3eab8bbf1870b5",
+        "android_client_info": {
+          "package_name": "com.kochsj.realrealty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "846848308336-1nbdcmvbt52a470421vm4h2n30e9c4vg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kochsj.realrealty",
+            "certificate_hash": "aed02d052afad16bcf89f858cb40d9786f0a30bf"
+          }
+        },
+        {
+          "client_id": "846848308336-fgk0n5755m6gjont0srdmtetk7dfime7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_YpqZ_4g2EYWWJ0rRniGuFgv_MdBhL1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "846848308336-fgk0n5755m6gjont0srdmtetk7dfime7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
