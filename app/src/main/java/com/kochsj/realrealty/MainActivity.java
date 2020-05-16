@@ -1,10 +1,12 @@
 package com.kochsj.realrealty;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.kochsj.realrealty.adapters.MapViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,8 +28,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showMap(View view) {
-        Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
+        ViewPager centerView = findViewById(R.id.center_view);
+        MapViewAdapter adapter = new MapViewAdapter(this);
+
+        centerView.setAdapter(adapter);
+
+//        Intent intent = new Intent(this, MapsActivity.class);
+//        startActivity(intent);
     }
 
 }
