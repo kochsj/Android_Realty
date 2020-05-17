@@ -32,10 +32,8 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
         mBinding.verifyEmailButton.setOnClickListener(this);
         mBinding.reloadButton.setOnClickListener(this);
 
-        // [START initialize_auth]
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        // [END initialize_auth]
     }
 
     // [START on_start_check_user]

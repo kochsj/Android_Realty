@@ -21,6 +21,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""/>
+        <Button
+            android:id="@+id/sign_in_with_email"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_in"/>
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_width="wrap_content"
@@ -29,7 +34,7 @@
             android:id="@+id/sign_out_button"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:text="Sign Out"/>
+            android:text="@string/sign_out"/>
 
     </LinearLayout>
 <!--    <fragment-->

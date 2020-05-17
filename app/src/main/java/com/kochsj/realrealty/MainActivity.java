@@ -24,6 +24,7 @@ import com.kochsj.realrealty.activities.EmailPasswordActivity;
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
     SignInButton signInButton;
     Button signOutButton;
+    Button signInWithEmail;
     TextView statusTextView;
     GoogleApiClient mGoogleApiClient;
 
@@ -52,17 +53,22 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         signOutButton = (Button) findViewById(R.id.sign_out_button);
         signOutButton.setOnClickListener(this);
 
+        signInWithEmail = (Button) findViewById(R.id.sign_in_with_email);
+        signInWithEmail.setOnClickListener(this);
+
     }
 
     public void onClick(View view) {
         switch(view.getId()) {
             case R.id.sign_in_button:
-                Intent intent = new Intent(this, EmailPasswordActivity.class);
-                startActivity(intent);
-//                signIn();
+                signIn();
                 break;
             case R.id.sign_out_button:
                 signOut();
+                break;
+            case R.id.sign_in_with_email:
+                Intent intent = new Intent(this, EmailPasswordActivity.class);
+                startActivity(intent);
                 break;
         }
     }
