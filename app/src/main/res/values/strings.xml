@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">Real Realty</string>
     <string name="title_activity_maps">Map</string>
+    <string name="hint_email">email</string>
+    <string name="hint_password">password</string>
+    <string name="description_firebase">firebase</string>
+    <string name="email_password_title_text">Sign In</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="create_account">Create Account</string>
+    <string name="verify_email">Verify Email</string>
+    <string name="reload">reload</string>
 
     <string name="style_json">
   [
