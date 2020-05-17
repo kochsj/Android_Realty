@@ -19,6 +19,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.kochsj.realrealty.activities.EmailPasswordActivity;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
     SignInButton signInButton;
@@ -56,7 +57,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     public void onClick(View view) {
         switch(view.getId()) {
             case R.id.sign_in_button:
-                signIn();
+                Intent intent = new Intent(this, EmailPasswordActivity.class);
+                startActivity(intent);
+//                signIn();
                 break;
             case R.id.sign_out_button:
                 signOut();
