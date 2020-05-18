@@ -1,5 +1,10 @@
 package com.kochsj.realrealty.services;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -10,13 +15,16 @@ import com.kochsj.realrealty.models.User;
 
 public class UserDatabaseService {
     private final String uid;
+    private final CollectionReference userCollection;
+    private User user;
 
     public UserDatabaseService(String uid){
         this.uid = uid;
+        this.userCollection = FirebaseFirestore.getInstance().collection("users");
+        this.user = null;
     }
 
     // collection reference
-    final CollectionReference userCollection = FirebaseFirestore.getInstance().collection("users");
 
 //    Agent agentFromJson(String str) {
 //        final jsonData = json.decode(str);
@@ -43,10 +51,21 @@ public class UserDatabaseService {
     }
 
     public User getUserData() {
-        Task<DocumentSnapshot> userData = userCollection.document(uid).get();
-        while(!userData.isComplete()){}
-        return _userFromSnapshot(userData.getResult());
 
+        final Task<DocumentSnapshot> userData = userCollection.document(uid)
+                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+                            DocumentSnapshot snapshot = task.getResult();
+                            user = _userFromSnapshot(snapshot);
+                        } else {
+                            Log.d("UDS", "get failed with ", task.getException());
+                        }
+                    }
+                });
+
+        return user;
     }
 
     //user data from document snapshot

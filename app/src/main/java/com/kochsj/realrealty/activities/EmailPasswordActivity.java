@@ -17,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.kochsj.realrealty.MainApplication;
 import com.kochsj.realrealty.R;
 import com.kochsj.realrealty.databinding.ActivityEmailpasswordBinding;
+import com.kochsj.realrealty.models.User;
 import com.kochsj.realrealty.services.UserDatabaseService;
 
 
@@ -186,9 +187,8 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
 
             UserDatabaseService userDatabaseService = new UserDatabaseService(userID);
 
-            userDatabaseService.getUserData();
+            User u = userDatabaseService.getUserData();
 
-            Log.d(TAG, "dont count on it");
 
             mBinding.status.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail(), user.isEmailVerified()));
