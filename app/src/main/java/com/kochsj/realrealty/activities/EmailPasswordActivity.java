@@ -9,20 +9,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.kochsj.realrealty.MainApplication;
 import com.kochsj.realrealty.R;
 import com.kochsj.realrealty.databinding.ActivityEmailpasswordBinding;
-import com.kochsj.realrealty.models.Agent;
-import com.kochsj.realrealty.models.House;
-import com.kochsj.realrealty.models.User;
+import com.kochsj.realrealty.services.UserDatabaseService;
 
 
 public class EmailPasswordActivity extends BaseActivity implements View.OnClickListener {
@@ -187,10 +182,17 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
         hideProgressBar();
         if (user != null) {
             String userID = user.getUid();
+            MainApplication.setUID(userID);
+
+            UserDatabaseService userDatabaseService = new UserDatabaseService(userID);
+
+            userDatabaseService.getUserData();
+
+            Log.d(TAG, "dont count on it");
+
             mBinding.status.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail(), user.isEmailVerified()));
             mBinding.detail.setText(getString(R.string.firebase_status_fmt, userID));
-            MainApplication.setUID(userID);
 
             mBinding.emailPasswordButtons.setVisibility(View.GONE);
             mBinding.emailPasswordFields.setVisibility(View.GONE);
@@ -201,56 +203,51 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
             } else {
                 mBinding.verifyEmailButton.setVisibility(View.VISIBLE);
             }
-            Log.d(TAG, MainApplication.getUID());
-            Agent a = new Agent(
-                    "Ben",
-                    "Testcase",
-                    "42512345678",
-                    "test@test.test",
-                    "Real Realty"
-            );
-            Log.d(TAG, "new agent: ");
-            House h = new House(
-                    "12345677",
-                    "123 Main St",
-                    "Redmond",
-                    "WA",
-                    "98052",
-                    "",
-                    "2",
-                    "2",
-                    123
-            );
-            Log.d(TAG, "new house: ");
-            User u = new User(
-                    userID,
-                    "Stephen",
-                    "Koch",
-                    "4258675309",
-                    "lou@lou.lou",
-                    h,
-                    a,
-                    "myprofilepictureurl.com"
-            );
-            Log.d(TAG, "new user: ");
 
+//            Agent a = new Agent(
+//                    "Ben",
+//                    "Testcase",
+//                    "42512345678",
+//                    "test@test.test",
+//                    "Real Realty"
+//            );
+//            House h = new House(
+//                    "12345677",
+//                    "123 Main St",
+//                    "Redmond",
+//                    "WA",
+//                    "98052",
+//                    "",
+//                    "2",
+//                    "2",
+//                    123
+//            );
+//            User u = new User(
+//                    userID,
+//                    "Stephen",
+//                    "Koch",
+//                    "4258675309",
+//                    "lou@lou.lou",
+//                    h,
+//                    a,
+//                    "myprofilepictureurl.com"
+//            );
+//
+//            db.collection("users")
+//                    .add(u.constructUserHashMap())
+//                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                        @Override
+//                        public void onSuccess(DocumentReference documentReference) {
+//                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+//                        }
+//                    })
+//                    .addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            Log.w(TAG, "Error adding document", e);
+//                        }
+//                    });
 
-            db.collection("users")
-                    .add(u.constructUserHashMap())
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w(TAG, "Error adding document", e);
-                        }
-                    });
-
-            Log.d(TAG, "woooooo yeah!");
         } else {
             mBinding.status.setText(R.string.signed_out);
             mBinding.detail.setText(null);
