@@ -30,8 +30,8 @@ public class ProfilePageAdapter extends PagerAdapter {
         TextView userFirstName = (TextView) layout.findViewById(R.id.first_name);
         TextView userLastName = (TextView) layout.findViewById(R.id.last_name);
 
-        userFirstName.setText(user.getFirstName());
-        userLastName.setText(user.getLastName());
+//        userFirstName.setText(user.getFirstName());
+//        userLastName.setText(user.getLastName());
 
         //need to add to ViewGroup to render
         container.addView(layout);

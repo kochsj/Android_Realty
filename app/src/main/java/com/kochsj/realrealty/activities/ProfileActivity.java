@@ -5,12 +5,11 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.kochsj.realrealty.R;
-import com.kochsj.realrealty.models.User;
 
 public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        User user = new User("Stephen", "Koch");
+//        User user = new User("Stephen", "Koch");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
