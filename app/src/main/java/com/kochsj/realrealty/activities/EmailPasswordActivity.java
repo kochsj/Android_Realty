@@ -1,5 +1,6 @@
 package com.kochsj.realrealty.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,18 +14,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.kochsj.realrealty.MainApplication;
+import com.kochsj.realrealty.MapsActivity;
 import com.kochsj.realrealty.R;
 import com.kochsj.realrealty.databinding.ActivityEmailpasswordBinding;
-import com.kochsj.realrealty.models.User;
-import com.kochsj.realrealty.services.UserDatabaseService;
 
 
 public class EmailPasswordActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "EmailPassword";
-    final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private ActivityEmailpasswordBinding mBinding;
 
@@ -185,68 +183,29 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
             String userID = user.getUid();
             MainApplication.setUID(userID);
 
-            UserDatabaseService userDatabaseService = new UserDatabaseService(userID);
 
-            User u = userDatabaseService.getUserData();
+            // load the search/home page
+            Intent intent = new Intent(this, MapsActivity.class);
+            startActivity(intent);
 
-
-            mBinding.status.setText(getString(R.string.emailpassword_status_fmt,
-                    user.getEmail(), user.isEmailVerified()));
-            mBinding.detail.setText(getString(R.string.firebase_status_fmt, userID));
-
-            mBinding.emailPasswordButtons.setVisibility(View.GONE);
-            mBinding.emailPasswordFields.setVisibility(View.GONE);
-            mBinding.signedInButtons.setVisibility(View.VISIBLE);
-
-            if (user.isEmailVerified()) {
-                mBinding.verifyEmailButton.setVisibility(View.GONE);
-            } else {
-                mBinding.verifyEmailButton.setVisibility(View.VISIBLE);
-            }
-
-//            Agent a = new Agent(
-//                    "Ben",
-//                    "Testcase",
-//                    "42512345678",
-//                    "test@test.test",
-//                    "Real Realty"
-//            );
-//            House h = new House(
-//                    "12345677",
-//                    "123 Main St",
-//                    "Redmond",
-//                    "WA",
-//                    "98052",
-//                    "",
-//                    "2",
-//                    "2",
-//                    123
-//            );
-//            User u = new User(
-//                    userID,
-//                    "Stephen",
-//                    "Koch",
-//                    "4258675309",
-//                    "lou@lou.lou",
-//                    h,
-//                    a,
-//                    "myprofilepictureurl.com"
-//            );
+//            UserDatabaseService userDatabaseService = new UserDatabaseService(userID);
 //
-//            db.collection("users")
-//                    .add(u.constructUserHashMap())
-//                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                        @Override
-//                        public void onSuccess(DocumentReference documentReference) {
-//                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-//                        }
-//                    })
-//                    .addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            Log.w(TAG, "Error adding document", e);
-//                        }
-//                    });
+//            User u = userDatabaseService.getUserData();
+//
+//
+//            mBinding.status.setText(getString(R.string.emailpassword_status_fmt,
+//                    user.getEmail(), user.isEmailVerified()));
+//            mBinding.detail.setText(getString(R.string.firebase_status_fmt, userID));
+//
+//            mBinding.emailPasswordButtons.setVisibility(View.GONE);
+//            mBinding.emailPasswordFields.setVisibility(View.GONE);
+//            mBinding.signedInButtons.setVisibility(View.VISIBLE);
+//
+//            if (user.isEmailVerified()) {
+//                mBinding.verifyEmailButton.setVisibility(View.GONE);
+//            } else {
+//                mBinding.verifyEmailButton.setVisibility(View.VISIBLE);
+//            }
 
         } else {
             mBinding.status.setText(R.string.signed_out);

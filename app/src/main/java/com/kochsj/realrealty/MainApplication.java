@@ -14,6 +14,7 @@ public class MainApplication extends Application {
         return UID;
     }
 
+}
 //     Called when the application is starting, before any other application objects have been created.
 //     Overriding this method is totally optional!
 //    @Override
@@ -41,8 +42,6 @@ public class MainApplication extends Application {
 //        super.onLowMemory();
 //    }
 
-
-}
 
 //public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 //    SignInButton signInButton;

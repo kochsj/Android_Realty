@@ -46,6 +46,52 @@ public class UserDatabaseService {
 //        return json.encode(dyn);
 //    }
 
+
+
+    //            Agent a = new Agent(
+//                    "Ben",
+//                    "Testcase",
+//                    "42512345678",
+//                    "test@test.test",
+//                    "Real Realty"
+//            );
+//            House h = new House(
+//                    "12345677",
+//                    "123 Main St",
+//                    "Redmond",
+//                    "WA",
+//                    "98052",
+//                    "",
+//                    "2",
+//                    "2",
+//                    123
+//            );
+//            User u = new User(
+//                    userID,
+//                    "Stephen",
+//                    "Koch",
+//                    "4258675309",
+//                    "lou@lou.lou",
+//                    h,
+//                    a,
+//                    "myprofilepictureurl.com"
+//            );
+//
+//            db.collection("users")
+//                    .add(u.constructUserHashMap())
+//                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                        @Override
+//                        public void onSuccess(DocumentReference documentReference) {
+//                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+//                        }
+//                    })
+//                    .addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            Log.w(TAG, "Error adding document", e);
+//                        }
+//                    });
+
     public void updateUserData(User user) {
         userCollection.document(uid).update(user.constructUserHashMap());
     }
