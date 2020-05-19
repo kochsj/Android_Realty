@@ -9,9 +9,9 @@ public class House {
     public String photoURL;
     public String beds;
     public String baths;
-    public int timeStamp;
+    public long timeStamp;
 
-    public House(String zpid, String streetAddress, String city, String state, String zipCode, String photoURL, String beds, String baths, int timeStamp){
+    public House(String zpid, String streetAddress, String city, String state, String zipCode, String photoURL, String beds, String baths, long timeStamp){
         this.zpid = zpid;
         this.streetAddress = streetAddress;
         this.city = city;

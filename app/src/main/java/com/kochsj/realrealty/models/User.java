@@ -5,18 +5,18 @@ import java.util.HashMap;
 
 public class User {
     // from firebase
-    String uid;
+    public String uid;
 
     // required to register
-    String firstName;
-    String lastName;
-    String phoneNumber;
-    String email;
+    public String firstName;
+    public String lastName;
+    public String phoneNumber;
+    public String email;
 
     // can be added in user's profile
-    House house;
-    Agent agent;
-    String profilePictureURL;
+    public House house;
+    public Agent agent;
+    public String profilePictureURL;
 
     public User(String uid, String firstName, String lastName, String phoneNumber, String email, House house, Agent agent, String profilePictureURL) {
         this.uid = uid;

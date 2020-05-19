@@ -1,10 +1,5 @@
 package com.kochsj.realrealty.services;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -12,6 +7,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.kochsj.realrealty.models.Agent;
 import com.kochsj.realrealty.models.House;
 import com.kochsj.realrealty.models.User;
+
+import java.util.HashMap;
 
 public class UserDatabaseService {
     private final String uid;
@@ -96,34 +93,37 @@ public class UserDatabaseService {
         userCollection.document(uid).update(user.constructUserHashMap());
     }
 
-    public User getUserData() {
+    public Task<DocumentSnapshot> getUserData() {
 
-        final Task<DocumentSnapshot> userData = userCollection.document(uid)
-                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if(task.isSuccessful()){
-                            DocumentSnapshot snapshot = task.getResult();
-                            user = _userFromSnapshot(snapshot);
-                        } else {
-                            Log.d("UDS", "get failed with ", task.getException());
-                        }
-                    }
-                });
+        return userCollection.document(uid).get();
 
-        return user;
+//        final Task<DocumentSnapshot> userData = userCollection.document(uid)
+//                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                        if(task.isSuccessful()){
+//                            DocumentSnapshot snapshot = task.getResult();
+//                            user = _userFromSnapshot(snapshot);
+//                        } else {
+//                            Log.d("UDS", "get failed with ", task.getException());
+//                        }
+//                    }
+//                });
+//
+//        return user;
     }
 
     //user data from document snapshot
-    private User _userFromSnapshot(DocumentSnapshot snapshot) {
+    public User userFromSnapshot(DocumentSnapshot snapshot) {
 //    print("making user data...");
         String firstName = (String)snapshot.get("first_name");
         String lastName = (String)snapshot.get("last_name");
         String phoneNumber = (String)snapshot.get("phone_number");
         String email = (String)snapshot.get("email");
-        House house = (House)snapshot.get("house");
-        Agent agent = (Agent)snapshot.get("agent");
+        HashMap house = (HashMap)snapshot.get("house");
+        HashMap agent = (HashMap)snapshot.get("agent");
         String profilePictureUrl = (String)snapshot.get("profile_picture_url");
+
 
         return new User(
                 uid,
@@ -131,8 +131,24 @@ public class UserDatabaseService {
                 lastName,
                 phoneNumber,
                 email,
-                house,
-                agent,
+                new House(
+                        (String)house.get("zpid"),
+                        (String)house.get("streetAddress"),
+                        (String)house.get("city"),
+                        (String)house.get("state"),
+                        (String)house.get("zipCode"),
+                        (String)house.get("photoURL"),
+                        (String)house.get("beds"),
+                        (String)house.get("baths"),
+                        (long) house.get("timeStamp")
+                ),
+                new Agent(
+                        (String)agent.get("firstName"),
+                        (String)agent.get("lastName"),
+                        (String)agent.get("phoneNumber"),
+                        (String)agent.get("email"),
+                        (String)agent.get("company")
+                ),
                 profilePictureUrl
         );
     }

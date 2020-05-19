@@ -1,6 +1,5 @@
 package com.kochsj.realrealty.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -14,10 +13,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.kochsj.realrealty.MainApplication;
-import com.kochsj.realrealty.MapsActivity;
 import com.kochsj.realrealty.R;
 import com.kochsj.realrealty.databinding.ActivityEmailpasswordBinding;
+import com.kochsj.realrealty.models.User;
+import com.kochsj.realrealty.services.UserDatabaseService;
 
 
 public class EmailPasswordActivity extends BaseActivity implements View.OnClickListener {
@@ -185,27 +186,42 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
 
 
             // load the search/home page
-            Intent intent = new Intent(this, MapsActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(this, MapsActivity.class);
+//            startActivity(intent);
 
-//            UserDatabaseService userDatabaseService = new UserDatabaseService(userID);
-//
-//            User u = userDatabaseService.getUserData();
-//
-//
-//            mBinding.status.setText(getString(R.string.emailpassword_status_fmt,
-//                    user.getEmail(), user.isEmailVerified()));
-//            mBinding.detail.setText(getString(R.string.firebase_status_fmt, userID));
-//
-//            mBinding.emailPasswordButtons.setVisibility(View.GONE);
-//            mBinding.emailPasswordFields.setVisibility(View.GONE);
-//            mBinding.signedInButtons.setVisibility(View.VISIBLE);
-//
-//            if (user.isEmailVerified()) {
-//                mBinding.verifyEmailButton.setVisibility(View.GONE);
-//            } else {
-//                mBinding.verifyEmailButton.setVisibility(View.VISIBLE);
-//            }
+            final UserDatabaseService userDatabaseService = new UserDatabaseService("qjR6jiaHUEHvzSOrBHVr");
+
+            userDatabaseService.getUserData().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if(task.isSuccessful()){
+                        DocumentSnapshot snapshot = task.getResult();
+
+                        User user = userDatabaseService.userFromSnapshot(snapshot);
+
+                        Log.d("xxxxxxxxxxxxxxx", "Document snapshot data: " + snapshot.getData());
+
+                        mBinding.status.setText(user.firstName);
+                        mBinding.detail.setText(user.phoneNumber);
+                    } else {
+                        Log.d("UDS", "get failed with ", task.getException());
+                    }
+                }
+            });
+
+            mBinding.status.setText(getString(R.string.emailpassword_status_fmt,
+                    user.getEmail(), user.isEmailVerified()));
+            mBinding.detail.setText(getString(R.string.firebase_status_fmt, userID));
+
+            mBinding.emailPasswordButtons.setVisibility(View.GONE);
+            mBinding.emailPasswordFields.setVisibility(View.GONE);
+            mBinding.signedInButtons.setVisibility(View.VISIBLE);
+
+            if (user.isEmailVerified()) {
+                mBinding.verifyEmailButton.setVisibility(View.GONE);
+            } else {
+                mBinding.verifyEmailButton.setVisibility(View.VISIBLE);
+            }
 
         } else {
             mBinding.status.setText(R.string.signed_out);
