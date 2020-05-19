@@ -8,42 +8,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical">-->
-<!--        <TextView-->
-<!--            android:id="@+id/status_textview"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text=""/>-->
-<!--        <Button-->
-<!--            android:id="@+id/sign_in_with_email"-->
-<!--            android:layout_width="110dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/sign_in"/>-->
-<!--        <com.google.android.gms.common.SignInButton-->
-<!--            android:id="@+id/sign_in_button"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"/>-->
-<!--        <Button-->
-<!--            android:id="@+id/sign_out_button"-->
-<!--            android:layout_width="110dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/sign_out"/>-->
-
-<!--    </LinearLayout>-->
-<!--    <fragment-->
-<!--        android:id="@+id/nav_host_fragment"-->
-<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-
-<!--        app:defaultNavHost="true"-->
-<!--        app:navGraph="@navigation/nav_graph" />-->
-
-
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -74,18 +38,35 @@
     </LinearLayout>
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <RelativeLayout
+        android:id="@+id/main_activity_layout"
         android:layout_weight="8.5"
-        android:background="?attr/colorPrimary">
-        <Button
-            android:id="@+id/button"
-            android:onClick="hideMap"
-            android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/white"
+            app:itemIconTint="@color/colorPrimary"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/menu_bottom_nav"/>
+    </RelativeLayout>
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="8.5"-->
+<!--        android:background="?attr/colorPrimary">-->
+<!--        <Button-->
+<!--            android:id="@+id/button"-->
+<!--            android:onClick="hideMap"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Button" />-->
+<!--    </com.google.android.material.bottomnavigation.BottomNavigationView>-->
 
 
 </LinearLayout>
