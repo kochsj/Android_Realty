@@ -1,7 +1,6 @@
-package com.kochsj.realrealty;
+package com.kochsj.realrealty.activities;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -13,6 +12,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.kochsj.realrealty.R;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -22,7 +22,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_main);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -44,7 +44,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapStyle(new MapStyleOptions(getResources().getString(R.string.style_json)));
-        Log.d("ON MAP READYYYYYYYYYYY", "i am here? xxxxxxxxxxxxxxxxxxxxx");
 
         LatLng seattle = new LatLng(47.6, -122.3);
         float zoom = 12.0f;

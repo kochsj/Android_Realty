@@ -1,5 +1,6 @@
 package com.kochsj.realrealty.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -179,15 +180,15 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
     }
 
     private void updateUI(FirebaseUser user) {
+        final Intent intent = new Intent(this, MapsActivity.class);
+
         hideProgressBar();
         if (user != null) {
             String userID = user.getUid();
             MainApplication.setUID(userID);
 
 
-            // load the search/home page
-//            Intent intent = new Intent(this, MapsActivity.class);
-//            startActivity(intent);
+
 
             final UserDatabaseService userDatabaseService = new UserDatabaseService("qjR6jiaHUEHvzSOrBHVr");
 
@@ -199,10 +200,17 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
 
                         User user = userDatabaseService.userFromSnapshot(snapshot);
 
-                        Log.d("xxxxxxxxxxxxxxx", "Document snapshot data: " + snapshot.getData());
+                        MainApplication.setUserData(user);
 
-                        mBinding.status.setText(user.firstName);
-                        mBinding.detail.setText(user.phoneNumber);
+
+                        // load the search/home page
+
+                        startActivity(intent);
+
+
+//                        Log.d("xxxxxxxxxxxxxxx", "Document snapshot data: " + snapshot.getData());
+//                        mBinding.status.setText(MainApplication.userData.firstName);
+//                        mBinding.detail.setText(MainApplication.userData.phoneNumber);
                     } else {
                         Log.d("UDS", "get failed with ", task.getException());
                     }
