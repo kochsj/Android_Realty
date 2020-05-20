@@ -30,22 +30,22 @@
             android:id="@+id/profile_house_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="some button" />
+            android:text="House" />
         <Button
             android:id="@+id/profile_agent_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="some button" />
+            android:text="Agent" />
         <Button
             android:id="@+id/profile_documents_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="some button" />
+            android:text="Docs" />
         <Button
             android:id="@+id/profile_preferences_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="some button" />
+            android:text="prefs" />
 
     </LinearLayout>
 

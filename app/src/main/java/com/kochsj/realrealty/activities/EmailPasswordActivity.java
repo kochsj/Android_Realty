@@ -48,7 +48,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                 R.id.navigation_home, R.id.navigation_favorites, R.id.navigation_profile, R.id.navigation_chat, R.id.navigation_more)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
     }
 

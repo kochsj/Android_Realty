@@ -9,7 +9,7 @@ public class AgentViewModel extends ViewModel {
 
     public AgentViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is profile fragment");
+        mText.setValue("This is the Agent fragment");
     }
 
     public LiveData<String> getText() {

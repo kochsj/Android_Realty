@@ -21,6 +21,7 @@ public class MyHouseFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+
         myHouseViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(MyHouseViewModel.class);
         View root = inflater.inflate(R.layout.fragment_map, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
@@ -32,6 +33,38 @@ public class MyHouseFragment extends Fragment {
             }
         });
 
+
         return root;
     }
 }
+
+//public class MyHouseFragment extends Fragment {
+//    private MyHouseViewModel myHouseViewModel;
+//
+//
+//    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//
+////        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+////            @Override
+////            public void handleOnBackPressed() {
+////                Log.d("tagging and bagging", "handleOnBackPressed: ");
+////                Navigation.findNavController(getView()).navigate(R.id.navigation_profile);
+////            }
+////        };
+////
+////        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
+//
+//        myHouseViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(MyHouseViewModel.class);
+//        View root = inflater.inflate(R.layout.fragment_map, container, false);
+//        final TextView textView = root.findViewById(R.id.text_home);
+//
+//        myHouseViewModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
+//
+//        return root;
+//    }
+//}

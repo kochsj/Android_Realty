@@ -9,7 +9,7 @@ public class MyHouseViewModel extends ViewModel {
 
     public MyHouseViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is profile fragment");
+        mText.setValue("This is where you see info for your house");
     }
 
     public LiveData<String> getText() {

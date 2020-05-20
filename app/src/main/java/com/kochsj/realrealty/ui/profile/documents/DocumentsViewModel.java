@@ -9,7 +9,7 @@ public class DocumentsViewModel extends ViewModel {
 
     public DocumentsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is profile fragment");
+        mText.setValue("This is the Documents fragment");
     }
 
     public LiveData<String> getText() {

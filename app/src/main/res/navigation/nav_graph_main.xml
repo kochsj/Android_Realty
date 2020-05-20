@@ -34,4 +34,47 @@
         android:name="com.kochsj.realrealty.ui.more.MoreFragment"
         android:label="@string/title_more"
         tools:layout="@layout/fragment_more" />
+
+    <fragment
+        android:id="@+id/navigation_profile_house"
+        android:name="com.kochsj.realrealty.ui.profile.house.MyHouseFragment"
+        android:label="@string/title_profile_house"
+        tools:layout="@layout/fragment_profile_house" >
+        <action
+            android:id="@+id/action_navigation_profile_house_to_navigation_profile"
+            app:destination="@id/navigation_profile"
+            app:popUpTo="@id/navigation_profile"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile_agent"
+        android:name="com.kochsj.realrealty.ui.profile.agent.AgentFragment"
+        android:label="@string/title_profile_agent"
+        tools:layout="@layout/fragment_profile_agent" >
+        <action
+            android:id="@+id/action_navigation_profile_agent_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile_documents"
+        android:name="com.kochsj.realrealty.ui.profile.documents.DocumentsFragment"
+        android:label="@string/title_profile_documents"
+        tools:layout="@layout/fragment_profile_documents" >
+        <action
+            android:id="@+id/action_navigation_profile_documents_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile_preferences"
+        android:name="com.kochsj.realrealty.ui.profile.preferences.PreferencesFragment"
+        android:label="@string/title_profile_preferences"
+        tools:layout="@layout/fragment_profile_preferences" >
+        <action
+            android:id="@+id/action_navigation_profile_preferences_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+    </fragment>
+
 </navigation>

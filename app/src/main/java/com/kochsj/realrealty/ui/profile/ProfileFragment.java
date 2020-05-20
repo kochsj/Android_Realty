@@ -1,6 +1,5 @@
 package com.kochsj.realrealty.ui.profile;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +14,9 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
+import androidx.navigation.Navigation;
 
 import com.kochsj.realrealty.R;
-import com.kochsj.realrealty.activities.MapsActivity;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
     private ProfileViewModel profileViewModel;
@@ -45,6 +44,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         mDocumentsButton.setOnClickListener(this);
         mPreferencesButton.setOnClickListener(this);
 
+
         final TextView textView = root.findViewById(R.id.text_profile);
 
         profileViewModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
@@ -59,16 +59,22 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+//        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
         switch (v.getId()) {
             case R.id.profile_agent_button:
+                Navigation.findNavController(v).navigate(R.id.navigation_profile_agent);
                 break;
             case R.id.profile_house_button:
-                Intent intent = new Intent(getActivity(), MapsActivity.class);
-                startActivity(intent);
+                Navigation.findNavController(v).navigate(R.id.navigation_profile_house);
+//                Intent intent = new Intent(getActivity(), MapsActivity.class);
+//                startActivity(intent);
                 break;
             case R.id.profile_documents_button:
+                Navigation.findNavController(v).navigate(R.id.navigation_profile_documents);
                 break;
             case R.id.profile_preferences_button:
+                Navigation.findNavController(v).navigate(R.id.navigation_profile_preferences);
                 break;
         }
 
