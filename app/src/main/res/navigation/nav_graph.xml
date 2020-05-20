@@ -3,19 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentMain">
-    <fragment
-        android:id="@+id/fragmentMain"
-        android:name="com.kochsj.realrealty.FragmentMain"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
-        <action
-            android:id="@+id/action_fragmentMain_to_chatFragment"
-            app:destination="@id/chatFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/chatFragment"
-        android:name="com.kochsj.realrealty.ChatFragment"
-        android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+    app:startDestination="@id/emailPasswordActivity">
+    <activity
+        android:id="@+id/emailPasswordActivity"
+        android:name="com.kochsj.realrealty.activities.EmailPasswordActivity"
+        android:label="EmailPasswordActivity" />
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.kochsj.realrealty.activities.MapsActivity"
+        android:label="MapsActivity" />
 </navigation>
