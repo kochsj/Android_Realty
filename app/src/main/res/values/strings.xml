@@ -18,8 +18,10 @@
 
 
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_favorites">Dashboard</string>
+    <string name="title_profile">Notifications</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_more">More</string>
 
     <string name="style_json">
   [
