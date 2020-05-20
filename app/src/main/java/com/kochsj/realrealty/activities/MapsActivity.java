@@ -1,7 +1,6 @@
 package com.kochsj.realrealty.activities;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -56,13 +55,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.animateCamera(cameraUpdate);
     }
 
-    public void hideMap(View view) {
-        View mapContainer = findViewById(R.id.map_container);
-        View viewPager = findViewById(R.id.center_view);
-
-        mapContainer.setVisibility(View.GONE);
-        viewPager.setVisibility(View.VISIBLE);
-    }
+//    public void hideMap(View view) {
+//        View mapContainer = findViewById(R.id.map_container);
+//        View viewPager = findViewById(R.id.center_view);
+//
+//        mapContainer.setVisibility(View.GONE);
+//        viewPager.setVisibility(View.VISIBLE);
+//    }
 
 }
 
