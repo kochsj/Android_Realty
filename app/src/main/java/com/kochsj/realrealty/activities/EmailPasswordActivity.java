@@ -52,6 +52,12 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
         NavigationUI.setupWithNavController(navView, navController);
     }
 
+    public void showMyHome(View view) {
+        Log.d("profile_button", "showMyHome: ");
+//        Intent intent = new Intent(getActivity(), MapsActivity.class);
+//        startActivity(intent);
+    }
+
 //    @Override
 //    public void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);

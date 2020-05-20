@@ -1,3 +1,23 @@
+<!--<relativelayout-->
+<!--    name:outside-container-for-drawerlyout-->
+<!--    height: ... and width: ...-->
+<!--    <relativelayout>-->
+<!--        name:actual-continer-for-drawerlayout-->
+<!--        height: ... and width: ...-->
+<!--        &lt;!&ndash; place drawer layout code here &ndash;&gt;-->
+<!--        <drawerayout>-->
+<!--            height: ... and width: ...-->
+<!--            &lt;!&ndash; nest navigation view code here &ndash;&gt;-->
+<!--            <navview>-->
+<!--                height: ... and width: ...-->
+<!--            </navview>-->
+<!--        </drawerlayout>-->
+<!--    </relativelayout>-->
+<!--</relativelayout>-->
+
+
+
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -5,8 +25,49 @@
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <androidx.drawerlayout.widget.DrawerLayout-->
+<!--            android:id="@+id/drawer_layout"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent">-->
+
+<!--            <com.google.android.material.navigation.NavigationView-->
+<!--                android:id="@+id/profile_nav_view"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="0dp"-->
+<!--                android:layout_marginEnd="0dp"-->
+<!--                android:background="?android:attr/windowBackground"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                app:layout_constraintRight_toRightOf="parent"-->
+<!--                app:menu="@menu/menu_profile_nav">-->
+
+<!--            </com.google.android.material.navigation.NavigationView>-->
+
+<!--        </androidx.drawerlayout.widget.DrawerLayout>-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_host_fragment"-->
+<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:defaultNavHost="true"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:navGraph="@navigation/nav_graph_profile" />-->
+
     <TextView
-        android:id="@+id/text_dashboard"
+        android:id="@+id/text_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -18,4 +79,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="some button"
+        android:id="@+id/show_map"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
