@@ -11,15 +11,27 @@
         android:label="@string/title_home"
         tools:layout="@layout/activity_main" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_dashboard"-->
-<!--        android:name="com.kochsj.myapplication.ui.dashboard.DashboardFragment"-->
-<!--        android:label="@string/title_dashboard"-->
-<!--        tools:layout="@layout/fragment_dashboard" />-->
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.kochsj.realrealty.ui.favorites.FavoritesFragment"
+        android:label="@string/title_favorites"
+        tools:layout="@layout/fragment_favorites" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_notifications"-->
-<!--        android:name="com.kochsj.myapplication.ui.notifications.NotificationsFragment"-->
-<!--        android:label="@string/title_notifications"-->
-<!--        tools:layout="@layout/fragment_notifications" />-->
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.kochsj.realrealty.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.kochsj.realrealty.ui.chat.ChatFragment"
+        android:label="@string/title_chat"
+        tools:layout="@layout/fragment_chat" />
+
+    <fragment
+        android:id="@+id/navigation_more"
+        android:name="com.kochsj.realrealty.ui.more.MoreFragment"
+        android:label="@string/title_more"
+        tools:layout="@layout/fragment_more" />
 </navigation>
