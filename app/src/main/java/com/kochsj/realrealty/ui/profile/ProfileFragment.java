@@ -23,14 +23,27 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private ProfileViewModel profileViewModel;
     private View root;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    private Button mHouseButton;
+    private Button mAgentButton;
+    private Button mDocumentsButton;
+    private Button mPreferencesButton;
 
+
+
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         this.profileViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(ProfileViewModel.class);
         this.root = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        Button mButton = root.findViewById(R.id.show_map);
-        mButton.setOnClickListener(this);
+        mHouseButton = root.findViewById(R.id.profile_house_button);
+        mAgentButton = root.findViewById(R.id.profile_agent_button);
+        mDocumentsButton = root.findViewById(R.id.profile_documents_button);
+        mPreferencesButton = root.findViewById(R.id.profile_preferences_button);
+
+        mHouseButton.setOnClickListener(this);
+        mAgentButton.setOnClickListener(this);
+        mDocumentsButton.setOnClickListener(this);
+        mPreferencesButton.setOnClickListener(this);
 
         final TextView textView = root.findViewById(R.id.text_profile);
 
@@ -46,7 +59,18 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(getActivity(), MapsActivity.class);
-        startActivity(intent);
+        switch (v.getId()) {
+            case R.id.profile_agent_button:
+                break;
+            case R.id.profile_house_button:
+                Intent intent = new Intent(getActivity(), MapsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.profile_documents_button:
+                break;
+            case R.id.profile_preferences_button:
+                break;
+        }
+
     }
 }
