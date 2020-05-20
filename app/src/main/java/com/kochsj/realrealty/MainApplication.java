@@ -24,6 +24,8 @@ public class MainApplication extends Application {
     public static User getUserData() {
         return userData;
     }
+
+
 }
 //     Called when the application is starting, before any other application objects have been created.
 //     Overriding this method is totally optional!
