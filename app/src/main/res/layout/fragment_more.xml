@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,16 +7,53 @@
     tools:context=".ui.more.MoreFragment">
 
     <TextView
-        android:id="@+id/text_dashboard"
+        android:id="@+id/text_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
         android:textSize="20sp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/profile_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:gravity="center_horizontal" />
+
+    <LinearLayout
+        android:id="@+id/profile_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/text_more">
+        <Button
+            android:id="@+id/more_calculator_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="calculator" />
+        <Button
+            android:id="@+id/more_contact_us_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="contact us" />
+        <Button
+            android:id="@+id/more_our_team_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="our team" />
+        <Button
+            android:id="@+id/more_recently_viewed_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="recently viewed" />
+        <Button
+            android:id="@+id/more_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="settings" />
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

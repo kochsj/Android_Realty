@@ -35,46 +35,53 @@
         android:label="@string/title_more"
         tools:layout="@layout/fragment_more" />
 
+<!--    PROFILE NAVIGATION  -->
     <fragment
         android:id="@+id/navigation_profile_house"
         android:name="com.kochsj.realrealty.ui.profile.house.MyHouseFragment"
-        android:label="@string/title_profile_house"
-        tools:layout="@layout/fragment_profile_house" >
-        <action
-            android:id="@+id/action_navigation_profile_house_to_navigation_profile"
-            app:destination="@id/navigation_profile"
-            app:popUpTo="@id/navigation_profile"
-            app:popUpToInclusive="false" />
-    </fragment>
+        android:label="@string/title_profile_house"/>
 
     <fragment
         android:id="@+id/navigation_profile_agent"
         android:name="com.kochsj.realrealty.ui.profile.agent.AgentFragment"
         android:label="@string/title_profile_agent"
-        tools:layout="@layout/fragment_profile_agent" >
-        <action
-            android:id="@+id/action_navigation_profile_agent_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
-    </fragment>
+        tools:layout="@layout/fragment_profile_agent" />
 
     <fragment
         android:id="@+id/navigation_profile_documents"
         android:name="com.kochsj.realrealty.ui.profile.documents.DocumentsFragment"
         android:label="@string/title_profile_documents"
-        tools:layout="@layout/fragment_profile_documents" >
-        <action
-            android:id="@+id/action_navigation_profile_documents_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
-    </fragment>
+        tools:layout="@layout/fragment_profile_documents" />
 
     <fragment
         android:id="@+id/navigation_profile_preferences"
         android:name="com.kochsj.realrealty.ui.profile.preferences.PreferencesFragment"
         android:label="@string/title_profile_preferences"
-        tools:layout="@layout/fragment_profile_preferences" >
-        <action
-            android:id="@+id/action_navigation_profile_preferences_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
-    </fragment>
+        tools:layout="@layout/fragment_profile_preferences" />
+
+<!--    MORE NAVIGATION     -->
+    <fragment
+        android:id="@+id/navigation_more_calculator"
+        android:name="com.kochsj.realrealty.ui.more.calculator.MortgageCalculatorFragment"
+        tools:layout="@layout/fragment_more_calculator" />
+    <fragment
+        android:id="@+id/navigation_more_contact_us"
+        android:name="com.kochsj.realrealty.ui.more.contact_us.ContactUsFragment"
+        tools:layout="@layout/fragment_more_contact_us" />
+    <fragment
+        android:id="@+id/navigation_more_our_team"
+        android:name="com.kochsj.realrealty.ui.more.team.OurTeamFragment"
+        tools:layout="@layout/fragment_more_our_team" />
+    <fragment
+        android:id="@+id/navigation_more_recently_viewed"
+        android:name="com.kochsj.realrealty.ui.more.recent.RecentlyViewedFragment"
+        tools:layout="@layout/fragment_more_recently_viewed" />
+    <fragment
+        android:id="@+id/navigation_more_settings"
+        android:name="com.kochsj.realrealty.ui.more.settings.SettingsFragment"
+        tools:layout="@layout/fragment_more_settings" />
+
+
+
 
 </navigation>
