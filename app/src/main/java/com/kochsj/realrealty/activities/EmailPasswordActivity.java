@@ -8,14 +8,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +20,7 @@ import com.kochsj.realrealty.R;
 import com.kochsj.realrealty.databinding.ActivityEmailpasswordBinding;
 import com.kochsj.realrealty.models.User;
 import com.kochsj.realrealty.services.UserDatabaseService;
+import com.kochsj.realrealty.wrappers.AuthWrapper;
 
 
 public class EmailPasswordActivity extends BaseActivity implements View.OnClickListener {
@@ -37,61 +33,56 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
     private FirebaseAuth mAuth;
     // [END declare_auth]
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_favorites, R.id.navigation_profile, R.id.navigation_chat, R.id.navigation_more)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navView, navController);
-
-        View decorView = getWindow().getDecorView();
-        // Hide both the navigation bar and the status bar.
-        // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
-        // a general rule, you should design your app to hide the status bar whenever you
-        // hide the navigation bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-    }
-
-    public void showMyHome(View view) {
-        Log.d("profile_button", "showMyHome: ");
-//        Intent intent = new Intent(getActivity(), MapsActivity.class);
-//        startActivity(intent);
-    }
-
 //    @Override
-//    public void onCreate(Bundle savedInstanceState) {
+//    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
-//        mBinding = ActivityEmailpasswordBinding.inflate(getLayoutInflater());
-//        setContentView(mBinding.getRoot());
-//        setProgressBar(mBinding.progressBar);
+//        setContentView(R.layout.activity_main);
+//        BottomNavigationView navView = findViewById(R.id.nav_view);
+//        // Passing each menu ID as a set of Ids because each
+//        // menu should be considered as top level destinations.
+//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+//                R.id.navigation_home, R.id.navigation_favorites, R.id.navigation_profile, R.id.navigation_chat, R.id.navigation_more)
+//                .build();
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+////        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+//        NavigationUI.setupWithNavController(navView, navController);
 //
-//        // Buttons
-//        mBinding.emailSignInButton.setOnClickListener(this);
-//        mBinding.emailCreateAccountButton.setOnClickListener(this);
-//        mBinding.signOutButton.setOnClickListener(this);
-//        mBinding.verifyEmailButton.setOnClickListener(this);
-//        mBinding.reloadButton.setOnClickListener(this);
-//
-//        // Initialize Firebase Auth
-//        mAuth = FirebaseAuth.getInstance();
+//        View decorView = getWindow().getDecorView();
+//        // Hide both the navigation bar and the status bar.
+//        // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
+//        // a general rule, you should design your app to hide the status bar whenever you
+//        // hide the navigation bar.
+//        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                | View.SYSTEM_UI_FLAG_FULLSCREEN;
+//        decorView.setSystemUiVisibility(uiOptions);
 //    }
-//
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        updateUI(currentUser);
-//    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mBinding = ActivityEmailpasswordBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
+        setProgressBar(mBinding.progressBar);
+
+        // Buttons
+        mBinding.emailSignInButton.setOnClickListener(this);
+        mBinding.emailCreateAccountButton.setOnClickListener(this);
+        mBinding.signOutButton.setOnClickListener(this);
+        mBinding.verifyEmailButton.setOnClickListener(this);
+        mBinding.reloadButton.setOnClickListener(this);
+
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
 
     @Override
     public void onClick(View view) {
@@ -215,7 +206,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
     }
 
     private void updateUI(FirebaseUser user) {
-        final Intent intent = new Intent(this, MapsActivity.class);
+        final Intent intent = new Intent(this, AuthWrapper.class);
 
         hideProgressBar();
         if (user != null) {
