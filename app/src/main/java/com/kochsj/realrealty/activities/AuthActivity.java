@@ -275,6 +275,7 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
             });
 
             mBinding.authLayout.setVisibility(View.GONE);
+            // TODO: add progress spinner to page loading
 
 
         } else {
