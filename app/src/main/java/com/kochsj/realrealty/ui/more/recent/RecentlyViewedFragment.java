@@ -22,8 +22,8 @@ public class RecentlyViewedFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         recentlyViewedModel = new ViewModelProvider((ViewModelStoreOwner) this).get(RecentlyViewedModel.class);
-        View root = inflater.inflate(R.layout.fragment_map, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        View root = inflater.inflate(R.layout.fragment_more_recently_viewed, container, false);
+        final TextView textView = root.findViewById(R.id.text_more_recently_viewed);
 
         recentlyViewedModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
             @Override

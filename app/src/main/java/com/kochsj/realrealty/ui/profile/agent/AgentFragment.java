@@ -22,8 +22,8 @@ public class AgentFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         agentViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(AgentViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_map, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        View root = inflater.inflate(R.layout.fragment_profile_agent, container, false);
+        final TextView textView = root.findViewById(R.id.text_profile_agent);
 
         agentViewModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
             @Override

@@ -22,8 +22,8 @@ public class OurTeamFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         ourTeamViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(OurTeamViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_map, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        View root = inflater.inflate(R.layout.fragment_more_our_team, container, false);
+        final TextView textView = root.findViewById(R.id.text_more_our_team);
 
         ourTeamViewModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
             @Override

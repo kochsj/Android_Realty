@@ -23,8 +23,8 @@ public class ContactUsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         contactUsViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(ContactUsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_map, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        View root = inflater.inflate(R.layout.fragment_more_contact_us, container, false);
+        final TextView textView = root.findViewById(R.id.text_more_contact_us);
 
         contactUsViewModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
             @Override

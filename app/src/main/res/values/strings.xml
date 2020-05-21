@@ -18,10 +18,11 @@
 
 
     <string name="title_home">Home</string>
-    <string name="title_favorites">Dashboard</string>
-    <string name="title_profile">Notifications</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="title_profile">Profile</string>
     <string name="title_chat">Chat</string>
     <string name="title_more">More</string>
+
     <string name="title_profile_house">My House</string>
     <string name="title_profile_agent">My Agent</string>
     <string name="title_profile_documents">My Documents</string>

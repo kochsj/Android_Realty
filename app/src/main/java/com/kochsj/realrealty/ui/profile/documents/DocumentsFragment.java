@@ -22,8 +22,8 @@ public class DocumentsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         documentsViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(DocumentsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_map, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        View root = inflater.inflate(R.layout.fragment_profile_documents, container, false);
+        final TextView textView = root.findViewById(R.id.text_profile_documents);
 
         documentsViewModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
             @Override

@@ -22,8 +22,8 @@ public class ChatFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         chatViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(ChatViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_map, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        View root = inflater.inflate(R.layout.fragment_chat, container, false);
+        final TextView textView = root.findViewById(R.id.text_chat);
 
         chatViewModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
             @Override

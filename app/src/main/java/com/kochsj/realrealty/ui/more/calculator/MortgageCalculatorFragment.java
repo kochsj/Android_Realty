@@ -22,8 +22,8 @@ public class MortgageCalculatorFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         mortgageCalculatorViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(MortgageCalculatorViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_map, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        View root = inflater.inflate(R.layout.fragment_more_calculator, container, false);
+        final TextView textView = root.findViewById(R.id.text_more_calculator);
 
         mortgageCalculatorViewModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
             @Override

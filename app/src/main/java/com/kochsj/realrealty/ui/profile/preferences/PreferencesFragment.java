@@ -22,8 +22,8 @@ public class PreferencesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         preferencesViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(PreferencesViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_map, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+        View root = inflater.inflate(R.layout.fragment_profile_preferences, container, false);
+        final TextView textView = root.findViewById(R.id.text_profile_preferences);
 
         preferencesViewModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
             @Override
