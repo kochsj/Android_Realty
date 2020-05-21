@@ -59,7 +59,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        ArrayList<House> listOfHousesForSale = new ArrayList<House>();
+        ArrayList<House> listOfHousesForSale = new ArrayList<>();
         listOfHousesForSale.add(new House(
                 "1234",
                 "123 Main St",
@@ -72,6 +72,32 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 0,
                 47.6,
                 -122.3
+        ));
+        listOfHousesForSale.add(new House(
+                "4455",
+                "99 W Stewart",
+                "Seattle",
+                "WA",
+                "98101",
+                "",
+                "2",
+                "5",
+                0,
+                47.61,
+                -122.31
+        ));
+        listOfHousesForSale.add(new House(
+                "9933",
+                "77 Park Parkway",
+                "Seattle",
+                "WA",
+                "98101",
+                "",
+                "4",
+                "6",
+                0,
+                47.63,
+                -122.23
         ));
 
 

@@ -274,12 +274,7 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
                 }
             });
 
-            mBinding.status.setText(getString(R.string.emailpassword_status_fmt,
-                    user.getEmail(), user.isEmailVerified()));
-            mBinding.detail.setText(getString(R.string.firebase_status_fmt, userID));
-
-            mBinding.emailPasswordButtons.setVisibility(View.GONE);
-            mBinding.emailPasswordFields.setVisibility(View.GONE);
+            mBinding.authLayout.setVisibility(View.GONE);
 
 
         } else {
