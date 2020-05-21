@@ -164,6 +164,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
         mAuth.signOut();
         updateUI(null);
     }
+
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
@@ -234,9 +235,6 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                         startActivity(intent);
 
 
-//                        Log.d("xxxxxxxxxxxxxxx", "Document snapshot data: " + snapshot.getData());
-//                        mBinding.status.setText(MainApplication.userData.firstName);
-//                        mBinding.detail.setText(MainApplication.userData.phoneNumber);
                     } else {
                         Log.d("UDS", "get failed with ", task.getException());
                     }

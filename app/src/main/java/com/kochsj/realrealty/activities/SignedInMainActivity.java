@@ -35,4 +35,6 @@ public class SignedInMainActivity extends BaseActivity {
                 | View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
     }
+
+
 }
