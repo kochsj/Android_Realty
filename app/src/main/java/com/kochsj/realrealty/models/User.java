@@ -26,12 +26,12 @@ public class User {
         this.email = email;
         this.house  = house;
         this.agent = agent;
-        this.profilePictureURL = profilePictureURL;
+        this.profilePictureURL = profilePictureURL != "" ? ;
     }
 
     public HashMap<String, Object> constructUserHashMap() {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("uid", uid);
+//        map.put("uid", uid);
         map.put("first_name", firstName);
         map.put("last_name", lastName);
         map.put("phone_number", phoneNumber);
@@ -41,6 +41,30 @@ public class User {
         map.put("profile_picture_url", profilePictureURL);
 
         return map;
+    }
+
+    public static House emptyHouse() {
+        return new House(
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                0
+        );
+    }
+
+    public static Agent emptyAgent() {
+        return new Agent(
+            "",
+            "",
+            "",
+            "",
+            ""
+        );
     }
 
 

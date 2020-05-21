@@ -12,7 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
-    tools:context="com.kochsj.realrealty.activities.MapsActivity"/>
+    tools:context="com.kochsj.realrealty.ui.search.MapFragment"/>
 
 <!--    <TextView-->
 <!--        android:id="@+id/text_home"-->

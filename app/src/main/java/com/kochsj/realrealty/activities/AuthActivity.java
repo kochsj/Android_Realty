@@ -17,60 +17,37 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.kochsj.realrealty.MainApplication;
 import com.kochsj.realrealty.R;
-import com.kochsj.realrealty.databinding.ActivityEmailpasswordBinding;
+import com.kochsj.realrealty.databinding.ActivityAuthBinding;
 import com.kochsj.realrealty.models.User;
 import com.kochsj.realrealty.services.UserDatabaseService;
 import com.kochsj.realrealty.wrappers.AuthWrapper;
 
 
-public class EmailPasswordActivity extends BaseActivity implements View.OnClickListener {
+public class AuthActivity extends BaseActivity implements View.OnClickListener {
 
-    private static final String TAG = "EmailPassword";
+    private static final String TAG = "AuthActivity";
 
-    private ActivityEmailpasswordBinding mBinding;
+    private ActivityAuthBinding mBinding;
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
     // [END declare_auth]
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//        BottomNavigationView navView = findViewById(R.id.nav_view);
-//        // Passing each menu ID as a set of Ids because each
-//        // menu should be considered as top level destinations.
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.navigation_home, R.id.navigation_favorites, R.id.navigation_profile, R.id.navigation_chat, R.id.navigation_more)
-//                .build();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-////        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(navView, navController);
-//
-//        View decorView = getWindow().getDecorView();
-//        // Hide both the navigation bar and the status bar.
-//        // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
-//        // a general rule, you should design your app to hide the status bar whenever you
-//        // hide the navigation bar.
-//        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//                | View.SYSTEM_UI_FLAG_FULLSCREEN;
-//        decorView.setSystemUiVisibility(uiOptions);
-//    }
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = ActivityEmailpasswordBinding.inflate(getLayoutInflater());
+        mBinding = ActivityAuthBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
         setProgressBar(mBinding.progressBar);
+        setProgressBar(mBinding.progressBar2);
 
         // Buttons
         mBinding.emailSignInButton.setOnClickListener(this);
         mBinding.emailCreateAccountButton.setOnClickListener(this);
-        mBinding.signOutButton.setOnClickListener(this);
-        mBinding.verifyEmailButton.setOnClickListener(this);
-        mBinding.reloadButton.setOnClickListener(this);
+        mBinding.createAccountCreateAccountButton.setOnClickListener(this);
+
+        mBinding.createAccountLayout.setVisibility(View.GONE);
+
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -91,16 +68,9 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                 signIn(mBinding.fieldEmail.getText().toString(), mBinding.fieldPassword.getText().toString());
                 break;
             case R.id.emailCreateAccountButton:
-                createAccount(mBinding.fieldEmail.getText().toString(), mBinding.fieldPassword.getText().toString());
-                break;
-            case R.id.signOutButton:
-                signOut();
-                break;
-            case R.id.verifyEmailButton:
-                verifyEmail();
-                break;
-            case R.id.reloadButton:
-                reload();
+//                createAccount(mBinding.fieldEmail.getText().toString(), mBinding.fieldPassword.getText().toString());
+                mBinding.emailpasswordLayout.setVisibility(View.GONE);
+                mBinding.createAccountLayout.setVisibility(View.VISIBLE);
                 break;
 
         }
@@ -125,7 +95,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
+                            Toast.makeText(AuthActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
@@ -160,11 +130,6 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
         return isValid;
     }
 
-    private void signOut() {
-        mAuth.signOut();
-        updateUI(null);
-    }
-
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
@@ -185,7 +150,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
+                            Toast.makeText(AuthActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
@@ -194,17 +159,11 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                 });
     }
 
-    private void reload() {
-    }
 
-    private void verifyEmail() {
-    }
-
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
+//    @Override
+//    public void onPointerCaptureChanged(boolean hasCapture) {
+//
+//    }
 
     private void updateUI(FirebaseUser user) {
         final Intent intent = new Intent(this, AuthWrapper.class);
@@ -213,9 +172,6 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
         if (user != null) {
             String userID = user.getUid();
             MainApplication.setUID(userID);
-
-
-
 
             final UserDatabaseService userDatabaseService = new UserDatabaseService("qjR6jiaHUEHvzSOrBHVr");
 
@@ -247,13 +203,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
 
             mBinding.emailPasswordButtons.setVisibility(View.GONE);
             mBinding.emailPasswordFields.setVisibility(View.GONE);
-            mBinding.signedInButtons.setVisibility(View.VISIBLE);
 
-            if (user.isEmailVerified()) {
-                mBinding.verifyEmailButton.setVisibility(View.GONE);
-            } else {
-                mBinding.verifyEmailButton.setVisibility(View.VISIBLE);
-            }
 
         } else {
             mBinding.status.setText(R.string.signed_out);
@@ -261,7 +211,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
 
             mBinding.emailPasswordButtons.setVisibility(View.VISIBLE);
             mBinding.emailPasswordFields.setVisibility(View.VISIBLE);
-            mBinding.signedInButtons.setVisibility(View.GONE);
+
         }
     }
 

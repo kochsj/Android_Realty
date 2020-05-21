@@ -92,7 +92,6 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
                 break;
         }
 
-
     }
 
     private void signOut() {

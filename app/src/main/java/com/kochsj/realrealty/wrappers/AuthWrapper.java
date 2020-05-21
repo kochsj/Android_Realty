@@ -7,8 +7,8 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.kochsj.realrealty.MainApplication;
-import com.kochsj.realrealty.activities.EmailPasswordActivity;
-import com.kochsj.realrealty.activities.SignedInMainActivity;
+import com.kochsj.realrealty.activities.AuthActivity;
+import com.kochsj.realrealty.activities.MainActivity;
 
 public class AuthWrapper extends AppCompatActivity {
     /*
@@ -29,13 +29,13 @@ public class AuthWrapper extends AppCompatActivity {
 
     private void startMainActivity() {
         Log.d("Wrapper", "startMainActivity: xxxxxxxxxxx");
-        Intent intent = new Intent(this, SignedInMainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }
 
     private void startAuthActivity() {
-        Intent intent = new Intent(this, EmailPasswordActivity.class);
+        Intent intent = new Intent(this, AuthActivity.class);
         startActivity(intent);
     }
 }
