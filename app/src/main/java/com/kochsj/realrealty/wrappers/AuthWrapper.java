@@ -24,6 +24,8 @@ public class AuthWrapper extends AppCompatActivity {
             startMainActivity();
         }
 
+        // clears back stack
+        finishAffinity();
     }
 
 
@@ -31,7 +33,6 @@ public class AuthWrapper extends AppCompatActivity {
         Log.d("Wrapper", "startMainActivity: xxxxxxxxxxx");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-
     }
 
     private void startAuthActivity() {
