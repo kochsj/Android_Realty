@@ -68,17 +68,26 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
                 signIn(mBinding.fieldEmail.getText().toString(), mBinding.fieldPassword.getText().toString());
                 break;
             case R.id.emailCreateAccountButton:
-//                createAccount(mBinding.fieldEmail.getText().toString(), mBinding.fieldPassword.getText().toString());
                 mBinding.emailpasswordLayout.setVisibility(View.GONE);
                 mBinding.createAccountLayout.setVisibility(View.VISIBLE);
                 break;
+
+            case R.id.createAccountCreateAccountButton:
+                createAccount(
+                        mBinding.createAccountFieldEmail.getText().toString(),
+                        mBinding.createAccountFieldPassword.getText().toString(),
+                        mBinding.createAccountFieldFirstName.getText().toString(),
+                        mBinding.createAccountFieldLastName.getText().toString(),
+                        mBinding.createAccountFieldPhoneNumber.getText().toString()
+                );
+
 
         }
     }
 
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
-        if (!validateForm()) {
+        if (!validateSignInForm()) {
             return;
         }
 
@@ -108,7 +117,7 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
                 });
     }
 
-    private boolean validateForm() {
+    private boolean validateSignInForm() {
         boolean isValid = true;
 
         String email = mBinding.fieldEmail.getText().toString();
@@ -130,9 +139,56 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
         return isValid;
     }
 
-    private void createAccount(String email, String password) {
-        Log.d(TAG, "createAccount:" + email);
-        if (!validateForm()) {
+    private boolean validateRegisterForm() {
+        boolean isValid = true;
+
+        String email = mBinding.createAccountFieldEmail.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            mBinding.createAccountFieldEmail.setError("Required.");
+            isValid = false;
+        } else {
+            mBinding.createAccountFieldEmail.setError(null);
+        }
+
+        String password = mBinding.createAccountFieldPassword.getText().toString();
+        if (TextUtils.isEmpty(password)) {
+            mBinding.createAccountFieldPassword.setError("Required.");
+            isValid = false;
+        } else {
+            mBinding.createAccountFieldPassword.setError(null);
+        }
+
+        String firstName = mBinding.createAccountFieldFirstName.getText().toString();
+        if (TextUtils.isEmpty(firstName)) {
+            mBinding.createAccountFieldFirstName.setError("Required.");
+        } else {
+            mBinding.createAccountFieldFirstName.setError(null);
+        }
+
+        String lastName = mBinding.createAccountFieldLastName.getText().toString();
+        if (TextUtils.isEmpty(lastName)) {
+            mBinding.createAccountFieldLastName.setError("Required.");
+        } else {
+            mBinding.createAccountFieldLastName.setError(null);
+        }
+
+        String phoneNumber = mBinding.createAccountFieldPhoneNumber.getText().toString();
+        if (TextUtils.isEmpty(phoneNumber)) {
+            mBinding.createAccountFieldPhoneNumber.setError("Required.");
+        } else {
+            mBinding.createAccountFieldPhoneNumber.setError(null);
+        }
+
+        return isValid;
+    }
+
+    private void createAccount(String email, String password, String firstName, String lastName, String phoneNumber) {
+        final String userEmail = email;
+        final String userFirstName = firstName;
+        final String userLastName = lastName;
+        final String userPhoneNumber = phoneNumber;
+
+        if (!validateRegisterForm()) {
             return;
         }
 
@@ -145,8 +201,27 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
+
+                            // make a user to store in db
+                            String uid = firebaseUser.getUid();
+
+                            final UserDatabaseService userDatabaseService = new UserDatabaseService(uid);
+
+                            User user = new User(
+                                    uid,
+                                    userFirstName,
+                                    userLastName,
+                                    userPhoneNumber,
+                                    userEmail,
+                                    User.emptyHouse(),
+                                    User.emptyAgent(),
+                                    ""
+                            );
+
+                            userDatabaseService.addUserToDatabase(user);
+
+                            updateUI(firebaseUser);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -173,7 +248,7 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
             String userID = user.getUid();
             MainApplication.setUID(userID);
 
-            final UserDatabaseService userDatabaseService = new UserDatabaseService("qjR6jiaHUEHvzSOrBHVr");
+            final UserDatabaseService userDatabaseService = new UserDatabaseService(userID);
 
             userDatabaseService.getUserData().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override

@@ -1,5 +1,7 @@
 package com.kochsj.realrealty.services;
 
+import android.util.Log;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -89,7 +91,15 @@ public class UserDatabaseService {
 //                        }
 //                    });
 
+    public void addUserToDatabase(User user) {
+        Log.d("setuserdata", "updateUserData: setting........");
+
+        userCollection.document(uid).set(user.constructUserHashMap());
+    }
+
+
     public void updateUserData(User user) {
+        Log.d("updateuserdata", "updateUserData: updating........");
         userCollection.document(uid).update(user.constructUserHashMap());
     }
 

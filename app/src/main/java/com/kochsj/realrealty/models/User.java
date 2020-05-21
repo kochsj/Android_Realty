@@ -26,7 +26,7 @@ public class User {
         this.email = email;
         this.house  = house;
         this.agent = agent;
-        this.profilePictureURL = profilePictureURL != "" ? ;
+        this.profilePictureURL = profilePictureURL;
     }
 
     public HashMap<String, Object> constructUserHashMap() {

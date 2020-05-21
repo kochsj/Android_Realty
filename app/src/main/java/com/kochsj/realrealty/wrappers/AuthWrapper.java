@@ -18,7 +18,7 @@ public class AuthWrapper extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (MainApplication.getUserData() == null) {
+        if (MainApplication.getUID() == null) {
             startAuthActivity();
         } else {
             startMainActivity();
