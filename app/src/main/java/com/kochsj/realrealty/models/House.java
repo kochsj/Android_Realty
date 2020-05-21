@@ -10,8 +10,10 @@ public class House {
     public String beds;
     public String baths;
     public long timeStamp;
+    public double latitude;
+    public double longitude;
 
-    public House(String zpid, String streetAddress, String city, String state, String zipCode, String photoURL, String beds, String baths, long timeStamp){
+    public House(String zpid, String streetAddress, String city, String state, String zipCode, String photoURL, String beds, String baths, long timeStamp, double latitude, double longitude){
         this.zpid = zpid;
         this.streetAddress = streetAddress;
         this.city = city;
@@ -21,6 +23,8 @@ public class House {
         this.beds = beds;
         this.baths = baths;
         this.timeStamp = timeStamp;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
 }

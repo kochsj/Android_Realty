@@ -2,6 +2,7 @@ package com.kochsj.realrealty.ui.search;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kochsj.realrealty.R;
+import com.kochsj.realrealty.models.House;
+
+import java.util.ArrayList;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
@@ -31,7 +36,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         View root = inflater.inflate(R.layout.fragment_map, container, false);
         supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.fragment_map);
-        if(supportMapFragment == null){
+        if (supportMapFragment == null) {
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             supportMapFragment = SupportMapFragment.newInstance();
@@ -54,60 +59,48 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        ArrayList<House> listOfHousesForSale = new ArrayList<House>();
+        listOfHousesForSale.add(new House(
+                "1234",
+                "123 Main St",
+                "Seattle",
+                "WA",
+                "98101",
+                "",
+                "3",
+                "2",
+                0,
+                47.6,
+                -122.3
+        ));
+
+
+
         mMap = googleMap;
         mMap.setMapStyle(new MapStyleOptions(getResources().getString(R.string.style_json)));
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker m) {
+                Log.d("TAG", "onMarkerClick: " + m.getTitle());
+                return true;
+            }
+        });
 
         LatLng seattle = new LatLng(47.6, -122.3);
         float zoom = 12.0f;
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(seattle, zoom);
 
-        mMap.addMarker(new MarkerOptions().position(seattle).title("Marker in Seattle"));
+        addMarkers(listOfHousesForSale);
         mMap.animateCamera(cameraUpdate);
     }
 
-//    public void hideMap(View view) {
-//        View mapContainer = findViewById(R.id.map_container);
-//        View viewPager = findViewById(R.id.center_view);
-//
-//        mapContainer.setVisibility(View.GONE);
-//        viewPager.setVisibility(View.VISIBLE);
-//    }
+    private void addMarkers(ArrayList<House> houseArrayList) {
+
+        for (House house : houseArrayList) {
+            LatLng latLng = new LatLng(house.latitude, house.longitude);
+            mMap.addMarker(new MarkerOptions().position(latLng).title(house.streetAddress));
+        }
+    }
 
 }
-
-//public class MapFragment extends Fragment implements OnMapReadyCallback {
-//
-//    private MapViewModel mapViewModel;
-//    private GoogleMap mMap;
-//
-//
-//    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//
-//        mapViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(MapViewModel.class);
-//        View root = inflater.inflate(R.layout.activity_maps, container, false);
-//
-////        final TextView textView = root.findViewById(R.id.text_home);
-////
-////        mapViewModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
-////            @Override
-////            public void onChanged(@Nullable String s) {
-////                textView.setText(s);
-////            }
-////        });
-//
-//        return root;
-//    }
-//
-//    @Override
-//    public void onMapReady(GoogleMap googleMap) {
-//        mMap = googleMap;
-//        mMap.setMapStyle(new MapStyleOptions(getResources().getString(R.string.style_json)));
-//
-//        LatLng seattle = new LatLng(47.6, -122.3);
-//        float zoom = 12.0f;
-//        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(seattle, zoom);
-//
-//        mMap.addMarker(new MarkerOptions().position(seattle).title("Marker in Seattle"));
-//        mMap.animateCamera(cameraUpdate);
-//    }
-//}

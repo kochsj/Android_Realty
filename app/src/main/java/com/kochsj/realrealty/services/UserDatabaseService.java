@@ -150,7 +150,9 @@ public class UserDatabaseService {
                         (String)house.get("photoURL"),
                         (String)house.get("beds"),
                         (String)house.get("baths"),
-                        (long) house.get("timeStamp")
+                        (long) house.get("timeStamp"),
+                        (double)house.get("latitude"),
+                        (double)house.get("longitude")
                 ),
                 new Agent(
                         (String)agent.get("firstName"),

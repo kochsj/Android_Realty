@@ -248,6 +248,8 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
             String userID = user.getUid();
             MainApplication.setUID(userID);
 
+//            startActivity(intent);
+
             final UserDatabaseService userDatabaseService = new UserDatabaseService(userID);
 
             userDatabaseService.getUserData().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
