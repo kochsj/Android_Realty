@@ -66,20 +66,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 Navigation.findNavController(v).navigate(R.id.navigation_profile_agent);
                 break;
             case R.id.profile_house_button:
-//                House house = new House(
-//                        "1234",
-//                        "123 Main St",
-//                        "Seattle",
-//                        "WA",
-//                        "98101",
-//                        "",
-//                        "3",
-//                        "2",
-//                        0,
-//                        47.6,
-//                        -122.3
-//                );
-                String[] house = {"1234", "123 Main St", "Seattle", "WA", "98101", "", "3", "2"};
+                String[] house = {"1234", "123 Main St", "Seattle, ", "WA", " 98101", "Beds: 3", " Baths: 2"};
                 Bundle bundle = new Bundle();
                 bundle.putStringArray("house", house);
                 Navigation.findNavController(v).navigate(R.id.navigation_detail_view, bundle);
