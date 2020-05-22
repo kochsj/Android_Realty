@@ -2,7 +2,6 @@ package com.kochsj.realrealty.ui.search;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -23,8 +23,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kochsj.realrealty.R;
 import com.kochsj.realrealty.models.House;
-
-import java.util.ArrayList;
+import com.kochsj.realrealty.ui.detail.DetailFragment;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
@@ -59,46 +58,47 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        ArrayList<House> listOfHousesForSale = new ArrayList<>();
-        listOfHousesForSale.add(new House(
-                "1234",
-                "123 Main St",
-                "Seattle",
-                "WA",
-                "98101",
-                "",
-                "3",
-                "2",
-                0,
-                47.6,
-                -122.3
-        ));
-        listOfHousesForSale.add(new House(
-                "4455",
-                "99 W Stewart",
-                "Seattle",
-                "WA",
-                "98101",
-                "",
-                "2",
-                "5",
-                0,
-                47.61,
-                -122.31
-        ));
-        listOfHousesForSale.add(new House(
-                "9933",
-                "77 Park Parkway",
-                "Seattle",
-                "WA",
-                "98101",
-                "",
-                "4",
-                "6",
-                0,
-                47.63,
-                -122.23
-        ));
+        final House[] listOfHousesForSale = {
+                new House(
+                        "1234",
+                        "123 Main St",
+                        "Seattle",
+                        "WA",
+                        "98101",
+                        "",
+                        "3",
+                        "2",
+                        0,
+                        47.6,
+                        -122.3
+                ),
+                new House(
+                        "4455",
+                        "99 W Stewart",
+                        "Seattle",
+                        "WA",
+                        "98101",
+                        "",
+                        "2",
+                        "5",
+                        0,
+                        47.61,
+                        -122.31
+                ),
+                new House(
+                        "9933",
+                        "77 Park Parkway",
+                        "Seattle",
+                        "WA",
+                        "98101",
+                        "",
+                        "4",
+                        "6",
+                        0,
+                        47.63,
+                        -122.23
+                )
+        };
 
 
 
@@ -108,7 +108,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker m) {
-                Log.d("onMarkerClick", m.getTitle());
+//                Log.d("onMarkerClick", m.getTitle());
+                int index = Integer.parseInt(m.getTitle());
+                Bundle bundle = DetailFragment.createArgsBundleForDetailView(listOfHousesForSale[index]);
+                Navigation.findNavController(getView()).navigate(R.id.navigation_detail_view, bundle);
                 return true;
             }
         });
@@ -121,11 +124,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mMap.animateCamera(cameraUpdate);
     }
 
-    private void addMarkers(ArrayList<House> houseArrayList) {
+    private void addMarkers(House[] houseArrayList) {
+        int index = 0;
 
         for (House house : houseArrayList) {
             LatLng latLng = new LatLng(house.latitude, house.longitude);
-            mMap.addMarker(new MarkerOptions().position(latLng).title(" " + "\r\n" + house.streetAddress + "\r\n" + house.city + ", " + house.state + " " + house.zipCode + "\r\nBeds: " + house.beds + "\r\nBaths: "+ house.baths));
+            mMap.addMarker(new MarkerOptions().position(latLng).title(Integer.toString(index)));
+            index += 1;
+//            mMap.addMarker(new MarkerOptions().position(latLng).title(" " + "\r\n" + house.streetAddress + "\r\n" + house.city + ", " + house.state + " " + house.zipCode + "\r\nBeds: " + house.beds + "\r\nBaths: "+ house.baths));
         }
     }
 

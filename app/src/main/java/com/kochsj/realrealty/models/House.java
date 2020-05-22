@@ -27,4 +27,18 @@ public class House {
         this.longitude = longitude;
     }
 
+    public String[] detailViewStringArrayFromHouse() {
+        String[] stringArray = new String[7];
+
+        stringArray[0] = this.streetAddress;
+        stringArray[1] = this.city;
+        stringArray[2] = this.state;
+        stringArray[3] = this.zipCode;
+        stringArray[4] = this.beds;
+        stringArray[5] = this.baths;
+        stringArray[6] = this.photoURL;
+
+        return stringArray;
+    }
+
 }
