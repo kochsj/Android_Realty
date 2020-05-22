@@ -81,4 +81,15 @@
         android:name="com.kochsj.realrealty.ui.more.settings.SettingsFragment"
         tools:layout="@layout/fragment_more_settings" />
 
+<!--    DETAIL NAVIGATION   -->
+    <fragment
+        android:id="@+id/navigation_detail_view"
+        android:name="com.kochsj.realrealty.ui.detail.DetailFragment"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="house"
+            app:argType="string[]"
+            app:nullable="true" />
+    </fragment>
+
 </navigation>

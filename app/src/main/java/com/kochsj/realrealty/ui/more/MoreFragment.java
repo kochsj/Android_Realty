@@ -2,7 +2,6 @@ package com.kochsj.realrealty.ui.more;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +68,6 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-//        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         switch (v.getId()) {
             case R.id.more_calculator_button:
@@ -95,8 +93,6 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
     }
 
     private void signOut() {
-        Log.d("morefragment", "signOut: inside method");
-
         MainApplication.setUID(null);
         MainApplication.setUserData(null);
         mAuth.signOut();
