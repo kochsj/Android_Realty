@@ -108,7 +108,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker m) {
-                Log.d("TAG", "onMarkerClick: " + m.getTitle());
+                Log.d("onMarkerClick", m.getTitle());
                 return true;
             }
         });
@@ -125,7 +125,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         for (House house : houseArrayList) {
             LatLng latLng = new LatLng(house.latitude, house.longitude);
-            mMap.addMarker(new MarkerOptions().position(latLng).title(house.streetAddress));
+            mMap.addMarker(new MarkerOptions().position(latLng).title(" " + "\r\n" + house.streetAddress + "\r\n" + house.city + ", " + house.state + " " + house.zipCode + "\r\nBeds: " + house.beds + "\r\nBaths: "+ house.baths));
         }
     }
 
