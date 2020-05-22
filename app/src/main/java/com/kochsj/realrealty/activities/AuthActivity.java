@@ -199,46 +199,42 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
-                            // make a user to store in db
-                            String uid = firebaseUser.getUid();
+                            if (firebaseUser != null) {
+                                // make a user to store in db
+                                String uid = firebaseUser.getUid();
+                                final UserDatabaseService userDatabaseService = new UserDatabaseService(uid);
+                                User newUser = new User(
+                                        uid,
+                                        userFirstName,
+                                        userLastName,
+                                        userPhoneNumber,
+                                        userEmail,
+                                        User.emptyHouse(),
+                                        User.emptyAgent(),
+                                        ""
+                                );
 
-                            final UserDatabaseService userDatabaseService = new UserDatabaseService(uid);
+                                userDatabaseService.addUserToDatabase(newUser);
 
-                            User user = new User(
-                                    uid,
-                                    userFirstName,
-                                    userLastName,
-                                    userPhoneNumber,
-                                    userEmail,
-                                    User.emptyHouse(),
-                                    User.emptyAgent(),
-                                    ""
-                            );
-
-                            userDatabaseService.addUserToDatabase(user);
-
-                            updateUI(firebaseUser);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(AuthActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
+                                // update AuthUI with authenticated user
+                                updateUI(firebaseUser);
+                                return;
+                            }
                         }
+
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                        Toast.makeText(AuthActivity.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                        updateUI(null);
+
                         hideProgressBar();
                     }
                 });
     }
 
-
-//    @Override
-//    public void onPointerCaptureChanged(boolean hasCapture) {
-//
-//    }
 
     private void updateUI(FirebaseUser user) {
         final Intent intent = new Intent(this, AuthWrapper.class);

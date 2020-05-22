@@ -29,30 +29,14 @@ public class UserDatabaseService {
         userCollection.document(uid).set(user.constructUserHashMap());
     }
 
-
     public void updateUserData(User user) {
         Log.d("updateuserdata", "updateUserData: updating........");
         userCollection.document(uid).update(user.constructUserHashMap());
     }
 
     public Task<DocumentSnapshot> getUserData() {
-
+        // returns a Task - To use: use .addOnCompleteListener method to implement data use case
         return userCollection.document(uid).get();
-
-//        final Task<DocumentSnapshot> userData = userCollection.document(uid)
-//                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                        if(task.isSuccessful()){
-//                            DocumentSnapshot snapshot = task.getResult();
-//                            user = _userFromSnapshot(snapshot);
-//                        } else {
-//                            Log.d("UDS", "get failed with ", task.getException());
-//                        }
-//                    }
-//                });
-//
-//        return user;
     }
 
     //user data from document snapshot

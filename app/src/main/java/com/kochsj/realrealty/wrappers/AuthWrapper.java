@@ -30,7 +30,6 @@ public class AuthWrapper extends AppCompatActivity {
 
 
     private void startMainActivity() {
-        Log.d("Wrapper", "startMainActivity: xxxxxxxxxxx");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
