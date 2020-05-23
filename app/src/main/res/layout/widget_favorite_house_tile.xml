@@ -2,15 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/favorite_house_template"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="200dp"
     >
 
     <ImageView
         android:id="@+id/favorite_image_view"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
         android:contentDescription="@string/image_of_house"
-        android:src="@drawable/house_for_sale"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/house_for_sale" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -24,14 +26,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/filler_address"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/filler_beds"
-            android:textColor="@android:color/holo_orange_dark"/>
+            android:textColor="@android:color/primary_text_dark"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
