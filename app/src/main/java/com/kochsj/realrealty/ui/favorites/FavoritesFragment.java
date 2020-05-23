@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.kochsj.realrealty.R;
+import com.squareup.picasso.Picasso;
 
 public class FavoritesFragment extends Fragment {
 
@@ -21,6 +23,16 @@ public class FavoritesFragment extends Fragment {
 
         final ViewGroup favoritesContainer = root.findViewById(R.id.favorites_insert_container);
         View tile = inflater.inflate(R.layout.widget_favorite_house_tile, null);
+
+        ImageView imageView = tile.findViewById(R.id.favorite_image_view);
+
+//        imageView.setImageResource(R.drawable.house_for_sale);
+
+
+        String imageUri = "https://i.imgur.com/tGbaZCY.jpg";
+        Picasso.with(getContext()).load(imageUri).into(imageView);
+
+
         View tile2 = inflater.inflate(R.layout.widget_favorite_house_tile, null);
         View tile3 = inflater.inflate(R.layout.widget_favorite_house_tile, null);
         View tile4 = inflater.inflate(R.layout.widget_favorite_house_tile, null);
