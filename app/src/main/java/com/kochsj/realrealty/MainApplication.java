@@ -11,6 +11,7 @@ public class MainApplication extends Application {
     public static User userData;
     public static UserDatabaseService userDatabaseService;
 
+
     public static void setUID(String UID) {
         MainApplication.UID = UID;
     }

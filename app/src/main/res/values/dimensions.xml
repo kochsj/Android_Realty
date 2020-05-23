@@ -9,4 +9,6 @@
     <dimen name="field_width_standard">160dp</dimen>
 
     <dimen name="button_horizontal_margin">8dp</dimen>
+
+    <dimen name="bottom_nav_bar_height">55dp</dimen>
 </resources>
