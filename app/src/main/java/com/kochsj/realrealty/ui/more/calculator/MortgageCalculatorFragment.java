@@ -23,7 +23,7 @@ public class MortgageCalculatorFragment extends Fragment {
 
         mortgageCalculatorViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(MortgageCalculatorViewModel.class);
         View root = inflater.inflate(R.layout.fragment_more_calculator, container, false);
-        final TextView textView = root.findViewById(R.id.text_more_calculator);
+        final TextView textView = root.findViewById(R.id.text_more_calculator_solution);
 
         mortgageCalculatorViewModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
             @Override
