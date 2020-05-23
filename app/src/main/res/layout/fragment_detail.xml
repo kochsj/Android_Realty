@@ -8,7 +8,7 @@
     tools:context=".ui.detail.DetailFragment">
 
     <ImageView
-        android:id="@+id/detail_image_view"
+        android:id="@+id/favorite_image_view"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:contentDescription="@string/image_of_house"
