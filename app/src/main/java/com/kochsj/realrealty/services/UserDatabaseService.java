@@ -29,6 +29,10 @@ public class UserDatabaseService {
         userCollection.document(uid).set(user.constructUserHashMap());
     }
 
+    public void addFavoriteHouseToUsersFavorites(House house) {
+        userCollection.document(uid).collection("favorites").document(house.zpid).set(house.constructHouseHashMap());
+    }
+
     public void updateUserData(User user) {
         Log.d("updateuserdata", "updateUserData: updating........");
         userCollection.document(uid).update(user.constructUserHashMap());
@@ -65,7 +69,6 @@ public class UserDatabaseService {
                         (String)house.get("photoURL"),
                         (String)house.get("beds"),
                         (String)house.get("baths"),
-                        (long) house.get("timeStamp"),
                         (double)house.get("latitude"),
                         (double)house.get("longitude")
                 ),

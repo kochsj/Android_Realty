@@ -244,9 +244,11 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
             String userID = user.getUid();
             MainApplication.setUID(userID);
 
+            final UserDatabaseService userDatabaseService = new UserDatabaseService(userID);
+            MainApplication.setUserDatabaseService(userDatabaseService);
+
 //            startActivity(intent);
 
-            final UserDatabaseService userDatabaseService = new UserDatabaseService(userID);
 
             userDatabaseService.getUserData().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
@@ -276,7 +278,7 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
 
         } else {
             mBinding.status.setText(R.string.signed_out);
-            mBinding.detail.setText(null);
+//            mBinding.detail.setText(null);
 
             mBinding.emailPasswordButtons.setVisibility(View.VISIBLE);
             mBinding.emailPasswordFields.setVisibility(View.VISIBLE);

@@ -10,17 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.kochsj.realrealty.MainApplication;
 import com.kochsj.realrealty.R;
 import com.kochsj.realrealty.models.House;
+import com.kochsj.realrealty.services.UserDatabaseService;
 
 public class DetailFragment extends Fragment implements View.OnClickListener{
-//    private DetailViewModel detailViewModel;
-//    private House houseToView;
-
-//    public DetailFragment(House house){
-//        this.houseToView = house;
-//        this.detailViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(DetailViewModel.class);
-//    }
+    private String[] houseArray;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -33,7 +29,7 @@ public class DetailFragment extends Fragment implements View.OnClickListener{
         addToFavoritesButton.setOnClickListener(this);
 
 
-        final String[] houseArray = getArguments().getStringArray("house");
+        houseArray = getArguments().getStringArray("house");
 
         streetAddress.setText(houseArray[0] + "\n" + houseArray[1] + ", " + houseArray[2] + " " + houseArray[3]);
 //        city.setText(houseArray[1]);
@@ -55,8 +51,23 @@ public class DetailFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        // add a house to favorites in User DB
+        UserDatabaseService userDatabaseService = MainApplication.getUserDatabaseService();
 
+        House house = new House(
+                houseArray[7],
+                houseArray[0],
+                houseArray[1],
+                houseArray[2],
+                houseArray[3],
+                houseArray[6],
+                houseArray[4],
+                houseArray[5],
+                Double.parseDouble(houseArray[9]),
+                Double.parseDouble(houseArray[10])
+                );
+
+        // add a house to favorites in User DB
+        userDatabaseService.addFavoriteHouseToUsersFavorites(house);
     }
 
 }

@@ -68,7 +68,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         "",
                         "3",
                         "2",
-                        0,
                         47.6,
                         -122.3
                 ),
@@ -81,7 +80,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         "",
                         "2",
                         "5",
-                        0,
                         47.61,
                         -122.31
                 ),
@@ -94,7 +92,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         "",
                         "4",
                         "6",
-                        0,
                         47.63,
                         -122.23
                 )
