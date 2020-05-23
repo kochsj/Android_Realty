@@ -1,9 +1,11 @@
 package com.kochsj.realrealty.ui.favorites;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,7 +24,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class FavoritesFragment extends Fragment {
+public class FavoritesFragment extends Fragment implements View.OnClickListener {
     private UserDatabaseService userDatabaseService = MainApplication.getUserDatabaseService();
     private ViewGroup favoritesContainer;
 
@@ -32,24 +34,6 @@ public class FavoritesFragment extends Fragment {
 
         favoritesContainer = root.findViewById(R.id.favorites_insert_container);
 
-
-//        View tile = inflater.inflate(R.layout.widget_favorite_house_tile, null);
-//        ImageView imageView = tile.findViewById(R.id.favorite_image_view);
-
-//        String imageUri = "https://i.imgur.com/tGbaZCY.jpg";
-//        String imageUri2 = "https://i.imgur.com/KbwPb6Y.jpeg";
-//        String imageUri3 = "";
-//        String imageUri4 = "";
-//
-//        View tile2 = inflater.inflate(R.layout.widget_favorite_house_tile, null);
-//        ImageView imageView2 = tile2.findViewById(R.id.favorite_image_view);
-//
-//        View tile3 = inflater.inflate(R.layout.widget_favorite_house_tile, null);
-//        ImageView imageView3 = tile3.findViewById(R.id.favorite_image_view);
-//
-//        View tile4 = inflater.inflate(R.layout.widget_favorite_house_tile, null);
-//        ImageView imageView4 = tile4.findViewById(R.id.favorite_image_view);
-
         userDatabaseService.getFavoriteHouses().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -58,23 +42,13 @@ public class FavoritesFragment extends Fragment {
                     List<DocumentSnapshot> favoriteHouses = snapshot.getDocuments();
 
                     for (DocumentSnapshot house : favoriteHouses) {
+//                        Log.d("should be zpid", "onComplete: " +house.getId()); it is.
                         House favoriteHouse = userDatabaseService.houseFromSnapshot(house, house.getId());
                         addFavoritesTileToFavoritesPage(inflater, favoriteHouse);
                     }
                 }
             }
         });
-
-//        getImageWithPicassoOrStock(imageUri, imageView);
-//        getImageWithPicassoOrStock(imageUri2, imageView2);
-//        getImageWithPicassoOrStock(imageUri3, imageView3);
-//        getImageWithPicassoOrStock(imageUri4, imageView4);
-//
-//
-//        favoritesContainer.addView(tile);
-//        favoritesContainer.addView(tile2);
-//        favoritesContainer.addView(tile3);
-//        favoritesContainer.addView(tile4);
 
 
         return root;
@@ -83,6 +57,11 @@ public class FavoritesFragment extends Fragment {
 
     private void addFavoritesTileToFavoritesPage(LayoutInflater inflater, House house) {
         View tile = inflater.inflate(R.layout.widget_favorite_house_tile, null);
+        Log.d("TAG", "addFavoritesTileToFavoritesPage: " + house.zpid);
+
+        Button removeFromFavoritesButton = tile.findViewById(R.id.dismiss);
+        removeFromFavoritesButton.setId(Integer.parseInt(house.zpid));
+
         TextView streetAddress = tile.findViewById(R.id.favorite_house_street_Address);
         TextView beds = tile.findViewById(R.id.favorite_house_beds);
         ImageView imageView = tile.findViewById(R.id.favorite_image_view);
@@ -101,5 +80,11 @@ public class FavoritesFragment extends Fragment {
         } catch(Exception e) {
             imageView.setImageResource(R.drawable.house_for_sale);
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        String viewID = Integer.toString(v.getId());
+        userDatabaseService.removeFavoriteHouse(viewID);
     }
 }
