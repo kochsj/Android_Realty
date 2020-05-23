@@ -27,6 +27,17 @@
     <string name="title_profile_agent">My Agent</string>
     <string name="title_profile_documents">My Documents</string>
     <string name="title_profile_preferences">My Preferences</string>
+<!--Detail View-->
+    <string name="image_of_house">Image of House</string>
+    <string name="add_to_favorites">Add to favorites</string>
+    <string name="beds">Beds: </string>
+    <string name="baths">Baths: </string>
+
+
+    <string name="filler_address">123 Main St \nSeattle, WA 98101</string>
+    <string name="filler_beds">Beds: 2</string>
+    <string name="filler_baths">Baths: 2</string>
+
 
     <string name="style_json">
   [

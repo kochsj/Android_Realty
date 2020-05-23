@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.kochsj.realrealty.R;
 import com.kochsj.realrealty.models.House;
 
-public class DetailFragment extends Fragment {
+public class DetailFragment extends Fragment implements View.OnClickListener{
 //    private DetailViewModel detailViewModel;
 //    private House houseToView;
 
@@ -24,20 +25,20 @@ public class DetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_detail, container, false);
-        final TextView streetAddress = root.findViewById(R.id.text_detail_streetAddress);
-        final TextView city = root.findViewById(R.id.text_detail_city);
-        final TextView state = root.findViewById(R.id.text_detail_state);
-        final TextView zipCode = root.findViewById(R.id.text_detail_zipCode);
-        final TextView beds = root.findViewById(R.id.text_detail_beds);
-        final TextView baths = root.findViewById(R.id.text_detail_baths);
+        final TextView streetAddress = root.findViewById(R.id.detail_streetAddress);
+        final TextView beds = root.findViewById(R.id.detail_beds_value);
+        final TextView baths = root.findViewById(R.id.detail_baths_value);
+        final Button addToFavoritesButton = root.findViewById(R.id.detail_add_to_favorites_button);
+
+        addToFavoritesButton.setOnClickListener(this);
 
 
         final String[] houseArray = getArguments().getStringArray("house");
 
-        streetAddress.setText(houseArray[0]);
-        city.setText(houseArray[1]);
-        state.setText(houseArray[2]);
-        zipCode.setText(houseArray[3]);
+        streetAddress.setText(houseArray[0] + "\n" + houseArray[1] + ", " + houseArray[2] + " " + houseArray[3]);
+//        city.setText(houseArray[1]);
+//        state.setText(houseArray[2]);
+//        zipCode.setText(houseArray[3]);
         beds.setText(houseArray[4]);
         baths.setText(houseArray[5]);
 
@@ -51,4 +52,11 @@ public class DetailFragment extends Fragment {
 
         return bundle;
     }
+
+    @Override
+    public void onClick(View v) {
+        // add a house to favorites in User DB
+
+    }
+
 }
