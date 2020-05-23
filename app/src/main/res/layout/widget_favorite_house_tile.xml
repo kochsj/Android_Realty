@@ -23,19 +23,34 @@
 
 
         <TextView
+            android:id="@+id/favorite_house_street_Address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/filler_address"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/beds"
+                android:textColor="@android:color/primary_text_dark"
+                android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/filler_beds"
-            android:textColor="@android:color/primary_text_dark"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/favorite_house_beds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@android:color/primary_text_dark"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
