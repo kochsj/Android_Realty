@@ -39,7 +39,8 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
         mBinding = ActivityAuthBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
         setProgressBar(mBinding.progressBar);
-        setProgressBar(mBinding.progressBar2);
+        setProgressBar(mBinding.spinningProgressBar);
+//        setProgressBar(mBinding.progressBar2);
 
         // Buttons
         mBinding.emailSignInButton.setOnClickListener(this);
@@ -273,6 +274,8 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
             });
 
             mBinding.authLayout.setVisibility(View.GONE);
+            mBinding.spinningProgressBar.setIndeterminate(true);
+            mBinding.spinningProgressBar.setVisibility(View.VISIBLE);
             // TODO: add progress spinner to page loading
 
 

@@ -1,167 +1,171 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <LinearLayout
-        android:id="@+id/auth_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
         <LinearLayout
-            android:id="@+id/emailpassword_layout"
+            android:id="@+id/auth_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/grey_100"
-            android:orientation="vertical"
-            android:weightSum="4">
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:indeterminate="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"
-                style="?android:attr/progressBarStyleHorizontal" />
-
+            android:orientation="vertical">
             <LinearLayout
+                android:id="@+id/emailpassword_layout"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:background="@color/grey_100"
+                android:orientation="vertical"
+                android:weightSum="4">
 
-                <ImageView
-                    android:id="@+id/icon"
-                    style="@style/ThemeOverlay.FirebaseIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/description_firebase"
-                    android:src="@drawable/firebase_lockup_400" />
-
-                <TextView
-                    android:id="@+id/titleText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/title_bottom_margin"
-                    android:text="@string/email_password_title_text"
-                    android:theme="@style/ThemeOverlay.MyTitleText" />
-
-                <TextView
-                    android:id="@+id/status"
-                    style="@style/ThemeOverlay.MyTextDetail"
-                    android:text="@string/signed_out" />
-
-                <TextView
-                    android:id="@+id/detail_beds_value"
-                    style="@style/ThemeOverlay.MyTextDetail"
-                    tools:text="Firebase User ID: 123456789abc" />
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@color/grey_300"
-                android:gravity="center_vertical">
-
-                <LinearLayout
-                    android:id="@+id/emailPasswordFields"
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:indeterminate="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
+                    android:visibility="invisible"
+                    style="?android:attr/progressBarStyleHorizontal" />
 
-                    <EditText
-                        android:id="@+id/fieldEmail"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="@string/hint_email"
-                        android:inputType="textEmailAddress" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/fieldPassword"
-                        android:layout_width="0dp"
+                    <ImageView
+                        android:id="@+id/icon"
+                        style="@style/ThemeOverlay.FirebaseIcon"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="@string/hint_password"
-                        android:inputType="textPassword" />
+                        android:contentDescription="@string/description_firebase"
+                        android:src="@drawable/firebase_lockup_400" />
+
+                    <TextView
+                        android:id="@+id/titleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/title_bottom_margin"
+                        android:text="@string/email_password_title_text"
+                        android:theme="@style/ThemeOverlay.MyTitleText" />
+
+                    <TextView
+                        android:id="@+id/status"
+                        style="@style/ThemeOverlay.MyTextDetail"
+                        android:text="@string/signed_out" />
+
+                    <TextView
+                        android:id="@+id/detail_beds_value"
+                        style="@style/ThemeOverlay.MyTextDetail"
+                        tools:text="Firebase User ID: 123456789abc" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar3"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/grey_300"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:id="@+id/emailPasswordFields"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <EditText
+                            android:id="@+id/fieldEmail"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="@string/hint_email"
+                            android:inputType="textEmailAddress" />
+
+                        <EditText
+                            android:id="@+id/fieldPassword"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="@string/hint_password"
+                            android:inputType="textPassword" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/emailPasswordButtons"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/emailPasswordFields"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <Button
+                            android:id="@+id/emailSignInButton"
+                            android:layout_marginStart="@dimen/button_horizontal_margin"
+                            android:layout_marginEnd="@dimen/button_horizontal_margin"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/sign_in"
+                            android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+                        <Button
+                            android:id="@+id/emailCreateAccountButton"
+                            android:layout_marginStart="@dimen/button_horizontal_margin"
+                            android:layout_marginEnd="@dimen/button_horizontal_margin"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/create_account"
+                            android:theme="@style/ThemeOverlay.MyDarkButton" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/create_account_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/grey_100"
+                android:orientation="vertical"
+                android:weightSum="5">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        style="@style/ThemeOverlay.FirebaseIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/description_firebase"
+                        android:src="@drawable/firebase_lockup_400" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Please fill out the form below to register"
+                        android:theme="@style/ThemeOverlay.CreateAccountTitleText" />
+
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/emailPasswordButtons"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/emailPasswordFields"
-                    android:orientation="horizontal"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
-
-                    <Button
-                        android:id="@+id/emailSignInButton"
-                        android:layout_marginStart="@dimen/button_horizontal_margin"
-                        android:layout_marginEnd="@dimen/button_horizontal_margin"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/sign_in"
-                        android:theme="@style/ThemeOverlay.MyDarkButton" />
-
-                    <Button
-                        android:id="@+id/emailCreateAccountButton"
-                        android:layout_marginStart="@dimen/button_horizontal_margin"
-                        android:layout_marginEnd="@dimen/button_horizontal_margin"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/create_account"
-                        android:theme="@style/ThemeOverlay.MyDarkButton" />
-                </LinearLayout>
-            </RelativeLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/create_account_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/grey_100"
-            android:orientation="vertical"
-            android:weightSum="5">
-
-            <ProgressBar
-                android:id="@+id/progressBar2"
-                android:indeterminate="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"
-                style="?android:attr/progressBarStyleHorizontal" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <ImageView
-                    style="@style/ThemeOverlay.FirebaseIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/description_firebase"
-                    android:src="@drawable/firebase_lockup_400" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Please fill out the form below to register"
-                    android:theme="@style/ThemeOverlay.CreateAccountTitleText" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -243,37 +247,51 @@
 
                     </LinearLayout>
 
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@color/grey_300"
-                android:gravity="center_vertical">
-
-                <LinearLayout
-                    android:id="@+id/create_account_Buttons"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
-
-                    <Button
-                        android:id="@+id/createAccountCreateAccountButton"
-                        android:layout_marginStart="@dimen/button_horizontal_margin"
-                        android:layout_marginEnd="@dimen/button_horizontal_margin"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/create_account"
-                        android:theme="@style/ThemeOverlay.MyDarkButton" />
                 </LinearLayout>
-            </RelativeLayout>
-        </LinearLayout>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/grey_300"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:id="@+id/create_account_Buttons"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <Button
+                            android:id="@+id/createAccountCreateAccountButton"
+                            android:layout_marginStart="@dimen/button_horizontal_margin"
+                            android:layout_marginEnd="@dimen/button_horizontal_margin"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/create_account"
+                            android:theme="@style/ThemeOverlay.MyDarkButton" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/spinning_progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="154dp"
+            android:layout_height="121dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="224dp"
+            android:layout_marginEnd="127dp"
+            android:layout_marginRight="127dp"
+            android:layout_marginBottom="258dp" />
     </LinearLayout>
+
+
+
 
 </layout>
 
