@@ -50,6 +50,10 @@ public class BaseActivity extends AppCompatActivity {
         Navigation.findNavController(view).navigate(R.id.navigation_favorites);
     }
 
+//    public void navigateToDetailView(View view) {
+//
+//    }
+
     @Override
     public void onStop() {
         super.onStop();
