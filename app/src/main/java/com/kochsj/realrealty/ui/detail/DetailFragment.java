@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -77,6 +78,9 @@ public class DetailFragment extends Fragment implements View.OnClickListener{
         // add a house to favorites in User DB
         UserDatabaseService userDatabaseService = MainApplication.getUserDatabaseService();
         userDatabaseService.addFavoriteHouseToUsersFavorites(house);
+
+        Toast.makeText(getContext(), "Added to favorites!",
+                Toast.LENGTH_SHORT).show();
     }
 
 }
