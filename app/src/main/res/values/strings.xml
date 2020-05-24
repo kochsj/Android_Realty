@@ -39,6 +39,12 @@
     <string name="filler_beds">Beds: 2</string>
     <string name="filler_baths">Baths: 2</string>
 
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="my_house">My House</string>
+
 
     <string name="style_json">
   [
