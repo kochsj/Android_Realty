@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.kochsj.realrealty.MainApplication;
 import com.kochsj.realrealty.R;
 import com.kochsj.realrealty.models.House;
 import com.kochsj.realrealty.ui.detail.DetailFragment;
@@ -107,7 +108,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             public boolean onMarkerClick(Marker m) {
 //                Log.d("onMarkerClick", m.getTitle());
                 int index = Integer.parseInt(m.getTitle());
-                Bundle bundle = DetailFragment.createArgsBundleForDetailView(listOfHousesForSale[index]);
+                House house = listOfHousesForSale[index];
+                MainApplication.userDatabaseService.addHouseToRecentlyViewed(house);
+
+                Bundle bundle = DetailFragment.createArgsBundleForDetailView(house);
                 Navigation.findNavController(getView()).navigate(R.id.navigation_detail_view, bundle);
                 return true;
             }

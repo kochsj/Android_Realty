@@ -3,7 +3,7 @@ package com.kochsj.realrealty.models;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class House {
+public class House implements Comparable<House> {
     public String zpid;
     public String streetAddress;
     public String city;
@@ -28,6 +28,14 @@ public class House {
         this.timeStamp = Calendar.getInstance().getTimeInMillis();
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     public HashMap<String, Object> constructHouseHashMap() {
@@ -65,4 +73,8 @@ public class House {
         return stringArray;
     }
 
+    @Override
+    public int compareTo(House h) {
+        return Long.compare(getTimeStamp(), h.getTimeStamp());
+    }
 }
