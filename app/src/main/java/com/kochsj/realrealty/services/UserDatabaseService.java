@@ -29,7 +29,7 @@ public class UserDatabaseService {
         this.uid = uid;
         this.userCollection = FirebaseFirestore.getInstance().collection("users");
         this.user = null;
-        this.listOfRecentlyViewedHouses = getRecentlyViewedHouses();
+        this.listOfRecentlyViewedHouses = setRecentlyViewedHouses();
     }
 
 // User
@@ -80,14 +80,19 @@ public class UserDatabaseService {
             Log.d("TAG", "addHouseToRecentlyViewed: " + Long.toString(house.timeStamp));
             userCollection.document(uid).collection("recently_viewed").document(house.zpid).set(house.constructHouseHashMap());
         }
+
+        listOfRecentlyViewedHouses = setRecentlyViewedHouses();
     }
 
-    public List<House> getRecentlyViewedHouses() {
+    public Task<QuerySnapshot> getRecentlyViewedHouses() {
+        return userCollection.document(uid).collection("recently_viewed").get();
+    }
+
+    private List<House> setRecentlyViewedHouses() {
         final List<House> houseList = new ArrayList<>();
 
         try {
-            userCollection.document(uid).collection("recently_viewed")
-                    .get()
+            getRecentlyViewedHouses()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
