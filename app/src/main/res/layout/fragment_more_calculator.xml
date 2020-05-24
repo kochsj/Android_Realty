@@ -20,10 +20,10 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.692" />
+        app:layout_constraintVertical_bias="0.757" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/more_calculator_mortgage_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
@@ -32,13 +32,14 @@
         android:layout_marginEnd="161dp"
         android:layout_marginRight="161dp"
         android:layout_marginBottom="29dp"
+        android:onClick="onClick"
         android:text="Calculate"
         app:layout_constraintBottom_toTopOf="@+id/text_more_calculator_solution"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.658" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -56,8 +57,9 @@
         app:layout_constraintTop_toBottomOf="@+id/more_calculator_title_text">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/more_calculator_total_loan_amount"
             android:layout_width="match_parent"
-            android:layout_height="31dp"
+            android:layout_height="wrap_content"
             android:hint="total loan amount" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="18dp"
-        android:text="TextView"
+        android:text="@string/title_mortgage_calculator"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_apr"
+            android:id="@+id/more_calculator_apr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="annual interest rate" />
@@ -112,7 +114,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_loan_duration"
+            android:id="@+id/more_calculator_loan_duration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="loan duration (years)" />

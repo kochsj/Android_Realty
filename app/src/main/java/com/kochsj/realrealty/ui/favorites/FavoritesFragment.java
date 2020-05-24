@@ -1,7 +1,6 @@
 package com.kochsj.realrealty.ui.favorites;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,12 +26,34 @@ import java.util.List;
 public class FavoritesFragment extends Fragment implements View.OnClickListener {
     private UserDatabaseService userDatabaseService = MainApplication.getUserDatabaseService();
     private ViewGroup favoritesContainer;
+    private FavoritesViewModel favoritesViewModel;
 
     public View onCreateView(@NonNull final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        // assign layout targets
         View root = inflater.inflate(R.layout.fragment_favorites, container, false);
-
         favoritesContainer = root.findViewById(R.id.favorites_insert_container);
+
+//        // assign view model
+//        favoritesViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(FavoritesViewModel.class);
+//        favoritesViewModel.setViewInflater(inflater);
+//        favoritesViewModel.setViewContext(getContext());
+//
+////        ArrayList<View> listOfHouses = favoritesViewModel.getFavoriteTiles();
+//
+//        // observe View change
+//        final Observer<ArrayList<View>> viewObserver = new Observer<ArrayList<View>>() {
+//            @Override
+//            public void onChanged(@Nullable final ArrayList<View> listOfHouses) {
+//                for (View house : listOfHouses){
+//                    favoritesContainer.addView(house);
+//                }
+//            }
+//        };
+//
+//        favoritesViewModel.getFavoriteTiles().
+
+
 
         userDatabaseService.getFavoriteHouses().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
             @Override
@@ -42,7 +63,6 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
                     List<DocumentSnapshot> favoriteHouses = snapshot.getDocuments();
 
                     for (DocumentSnapshot house : favoriteHouses) {
-//                        Log.d("should be zpid", "onComplete: " +house.getId()); it is.
                         House favoriteHouse = userDatabaseService.houseFromSnapshot(house, house.getId());
                         addFavoritesTileToFavoritesPage(inflater, favoriteHouse);
                     }
@@ -57,7 +77,7 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
     private void addFavoritesTileToFavoritesPage(LayoutInflater inflater, House house) {
         View tile = inflater.inflate(R.layout.widget_favorite_house_tile, null);
-        Log.d("TAG", "addFavoritesTileToFavoritesPage: " + house.zpid);
+//        Log.d("TAG", "addFavoritesTileToFavoritesPage: " + house.zpid);
 
         Button removeFromFavoritesButton = tile.findViewById(R.id.dismiss);
         removeFromFavoritesButton.setId(Integer.parseInt(house.zpid));
@@ -84,6 +104,8 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
+        UserDatabaseService userDatabaseService = MainApplication.getUserDatabaseService();
+
         String viewID = Integer.toString(v.getId());
         userDatabaseService.removeFavoriteHouse(viewID);
     }

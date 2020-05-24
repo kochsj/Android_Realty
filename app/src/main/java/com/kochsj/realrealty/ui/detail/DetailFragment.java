@@ -30,31 +30,27 @@ public class DetailFragment extends Fragment implements View.OnClickListener{
         final TextView beds = root.findViewById(R.id.detail_beds_value);
         final TextView baths = root.findViewById(R.id.detail_baths_value);
         final Button addToFavoritesButton = root.findViewById(R.id.detail_add_to_favorites_button);
+        addToFavoritesButton.setOnClickListener(this);
 
         // assign view model
         detailViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(DetailViewModel.class);
         detailViewModel.setHouseArray(getArguments());
 
-
         // observe mutable strings
         final Observer<String> streetAddressObserver = new Observer<String>() {
             @Override
-            public void onChanged(@Nullable final String h) {
-                // Update the UI, in this case, a TextView.
-                streetAddress.setText(h);
+            public void onChanged(@Nullable final String h) { streetAddress.setText(h);
             }
         };
         final Observer<String> bedsObserver = new Observer<String>() {
             @Override
             public void onChanged(@Nullable final String h) {
-                // Update the UI, in this case, a TextView.
                 beds.setText(h);
             }
         };
         final Observer<String> bathsObserver = new Observer<String>() {
             @Override
             public void onChanged(@Nullable final String h) {
-                // Update the UI, in this case, a TextView.
                 baths.setText(h);
             }
         };
@@ -62,9 +58,6 @@ public class DetailFragment extends Fragment implements View.OnClickListener{
         detailViewModel.getStreetAddress().observe(getViewLifecycleOwner(), streetAddressObserver);
         detailViewModel.getBeds().observe(getViewLifecycleOwner(), bedsObserver);
         detailViewModel.getBaths().observe(getViewLifecycleOwner(), bathsObserver);
-
-
-        addToFavoritesButton.setOnClickListener(this);
 
         return root;
     }
@@ -79,73 +72,11 @@ public class DetailFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        UserDatabaseService userDatabaseService = MainApplication.getUserDatabaseService();
-
         House house = detailViewModel.getHouseFromHouseArray();
 
         // add a house to favorites in User DB
+        UserDatabaseService userDatabaseService = MainApplication.getUserDatabaseService();
         userDatabaseService.addFavoriteHouseToUsersFavorites(house);
     }
-
-
-
-
-
-
-
-
-//
-//
-//
-//    private String[] houseArray;
-//
-//    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//
-//        View root = inflater.inflate(R.layout.fragment_detail, container, false);
-//        final TextView streetAddress = root.findViewById(R.id.detail_streetAddress);
-//        final TextView beds = root.findViewById(R.id.detail_beds_value);
-//        final TextView baths = root.findViewById(R.id.detail_baths_value);
-//        final Button addToFavoritesButton = root.findViewById(R.id.detail_add_to_favorites_button);
-//
-//        addToFavoritesButton.setOnClickListener(this);
-//
-//
-//        houseArray = getArguments().getStringArray("house");
-//
-//        streetAddress.setText(houseArray[0] + "\n" + houseArray[1] + ", " + houseArray[2] + " " + houseArray[3]);
-//        beds.setText(houseArray[4]);
-//        baths.setText(houseArray[5]);
-//
-//        return root;
-//    }
-//
-//    public static Bundle createArgsBundleForDetailView(House house) {
-//        String[] houseStringArray = house.detailViewStringArrayFromHouse();
-//        Bundle bundle = new Bundle();
-//        bundle.putStringArray("house", houseStringArray);
-//
-//        return bundle;
-//    }
-//
-//    @Override
-//    public void onClick(View v) {
-//        UserDatabaseService userDatabaseService = MainApplication.getUserDatabaseService();
-//
-//        House house = new House(
-//                houseArray[7],
-//                houseArray[0],
-//                houseArray[1],
-//                houseArray[2],
-//                houseArray[3],
-//                houseArray[6],
-//                houseArray[4],
-//                houseArray[5],
-//                Double.parseDouble(houseArray[9]),
-//                Double.parseDouble(houseArray[10])
-//                );
-//
-//        // add a house to favorites in User DB
-//        userDatabaseService.addFavoriteHouseToUsersFavorites(house);
-//    }
 
 }

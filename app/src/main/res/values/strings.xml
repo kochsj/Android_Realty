@@ -27,6 +27,7 @@
     <string name="title_profile_agent">My Agent</string>
     <string name="title_profile_documents">My Documents</string>
     <string name="title_profile_preferences">My Preferences</string>
+    <string name="title_mortgage_calculator">Mortgage Calculator</string>
 <!--Detail View-->
     <string name="image_of_house">Image of House</string>
     <string name="add_to_favorites">Add to favorites</string>

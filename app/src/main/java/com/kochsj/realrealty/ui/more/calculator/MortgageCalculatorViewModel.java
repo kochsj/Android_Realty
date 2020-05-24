@@ -9,7 +9,7 @@ public class MortgageCalculatorViewModel extends ViewModel {
 
     public MortgageCalculatorViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is the mortgage calculator fragment");
+//        mText.setValue("This is the mortgage calculator fragment");
     }
 
     public LiveData<String> getText() {
