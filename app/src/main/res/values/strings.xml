@@ -43,7 +43,12 @@
     <string name="last_name">Last Name</string>
     <string name="phone_number">Phone Number</string>
     <string name="email">Email</string>
+    <string name="looks_like_you_dont_have_an_agent_yet">Looks like you do not have an agent yet...</string>
+
     <string name="my_house">My House</string>
+    <string name="my_agent">My Agent</string>
+    <string name="my_documents">My Documents</string>
+    <string name="profile_preferences">Preferences</string>
 
 
     <string name="style_json">

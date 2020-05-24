@@ -64,8 +64,8 @@
             android:id="@+id/profile_phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:text="@string/phone_number"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/textView4"
@@ -77,7 +77,8 @@
             android:id="@+id/profile_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="9dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="28dp"
             android:text="@string/email"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -103,10 +104,12 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="100dp"
+                android:background="@drawable/border"
+                android:clickable="false">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/profile_house_icon"
                     android:layout_width="75dp"
                     android:layout_height="69dp"
                     android:layout_marginStart="16dp"
@@ -149,20 +152,124 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="100dp"
+                android:background="@drawable/border">
 
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="93dp"
+                    android:layout_height="92dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textView15"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="194dp"
+                    android:text="@string/my_agent"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/textView16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView5"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="279dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="33dp"
+                    android:text="@string/looks_like_you_dont_have_an_agent_yet"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView5"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="100dp"
+                android:background="@drawable/border">
 
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="93dp"
+                    android:layout_height="92dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textView17"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@android:drawable/ic_menu_save" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="136dp"
+                    android:text="@string/my_documents"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView6"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="279dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="33dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView6"
+                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="100dp"
+                android:background="@drawable/border">
 
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="93dp"
+                    android:layout_height="92dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@android:drawable/ic_menu_preferences" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/profile_preferences"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageView7"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
