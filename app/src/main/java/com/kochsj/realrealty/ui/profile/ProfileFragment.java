@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
@@ -22,10 +22,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private ProfileViewModel profileViewModel;
     private View root;
 
-    private Button mHouseButton;
-    private Button mAgentButton;
-    private Button mDocumentsButton;
-    private Button mPreferencesButton;
+    private ConstraintLayout mHouseButton;
+    private ConstraintLayout mAgentButton;
+    private ConstraintLayout mDocumentsButton;
+    private ConstraintLayout mPreferencesButton;
 
 
 
@@ -46,12 +46,34 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         mPreferencesButton.setOnClickListener(this);
 
 
-        final TextView textView = root.findViewById(R.id.text_profile);
+        final TextView firstName = root.findViewById(R.id.profile_first_name);
+        final TextView lastName = root.findViewById(R.id.profile_last_name);
+        final TextView phoneNumber = root.findViewById(R.id.profile_phone_number);
+        final TextView email = root.findViewById(R.id.profile_email);
 
-        profileViewModel.getText().observe((LifecycleOwner) this, new Observer<String>() {
+
+        profileViewModel.getFirstName().observe((LifecycleOwner) this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                firstName.setText(s);
+            }
+        });
+        profileViewModel.getLastName().observe((LifecycleOwner) this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                lastName.setText(s);
+            }
+        });
+        profileViewModel.getPhoneNumber().observe((LifecycleOwner) this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                phoneNumber.setText(s);
+            }
+        });
+        profileViewModel.getEmail().observe((LifecycleOwner) this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                email.setText(s);
             }
         });
 

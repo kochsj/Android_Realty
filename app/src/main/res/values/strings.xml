@@ -43,6 +43,7 @@
     <string name="last_name">Last Name</string>
     <string name="phone_number">Phone Number</string>
     <string name="email">Email</string>
+    <string name="content_description_profile_picture">profile picture</string>
     <string name="looks_like_you_dont_have_an_agent_yet">Looks like you do not have an agent yet...</string>
 
     <string name="my_house">My House</string>
