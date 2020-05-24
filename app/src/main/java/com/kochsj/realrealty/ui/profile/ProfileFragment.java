@@ -39,6 +39,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         mDocumentsButton = root.findViewById(R.id.profile_documents_button);
         mPreferencesButton = root.findViewById(R.id.profile_preferences_button);
 
+
         mHouseButton.setOnClickListener(this);
         mAgentButton.setOnClickListener(this);
         mDocumentsButton.setOnClickListener(this);

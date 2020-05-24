@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,14 +20,17 @@ import com.kochsj.realrealty.MainApplication;
 import com.kochsj.realrealty.R;
 import com.kochsj.realrealty.models.House;
 import com.kochsj.realrealty.services.UserDatabaseService;
+import com.kochsj.realrealty.ui.detail.DetailFragment;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FavoritesFragment extends Fragment implements View.OnClickListener {
     private UserDatabaseService userDatabaseService = MainApplication.getUserDatabaseService();
     private ViewGroup favoritesContainer;
     private FavoritesViewModel favoritesViewModel;
+    private List<House> listOfFavoriteHouses = new ArrayList<House>();
 
     public View onCreateView(@NonNull final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -61,10 +65,15 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
                 if (task.isSuccessful()) {
                     QuerySnapshot snapshot = task.getResult();
                     List<DocumentSnapshot> favoriteHouses = snapshot.getDocuments();
+                    int index = 0;
+
+
 
                     for (DocumentSnapshot house : favoriteHouses) {
                         House favoriteHouse = userDatabaseService.houseFromSnapshot(house, house.getId());
-                        addFavoritesTileToFavoritesPage(inflater, favoriteHouse);
+                        addFavoritesTileToFavoritesPage(inflater, favoriteHouse, index);
+                        listOfFavoriteHouses.add(favoriteHouse);
+                        index += 1;
                     }
                 }
             }
@@ -75,18 +84,22 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
     }
 
 
-    private void addFavoritesTileToFavoritesPage(LayoutInflater inflater, House house) {
+    private void addFavoritesTileToFavoritesPage(LayoutInflater inflater, House house, int index) {
         View tile = inflater.inflate(R.layout.widget_favorite_house_tile, null);
 //        Log.d("TAG", "addFavoritesTileToFavoritesPage: " + house.zpid);
+
+        ImageView favoriteImageView = tile.findViewById(R.id.favorite_image_view);
+        favoriteImageView.setOnClickListener(this);
+        favoriteImageView.setId(index);
 
         Button removeFromFavoritesButton = tile.findViewById(R.id.dismiss);
         removeFromFavoritesButton.setId(Integer.parseInt(house.zpid));
 
         TextView streetAddress = tile.findViewById(R.id.favorite_house_street_Address);
         TextView beds = tile.findViewById(R.id.favorite_house_beds);
-        ImageView imageView = tile.findViewById(R.id.favorite_image_view);
+//        ImageView imageView = tile.findViewById(R.id.favorite_image_view);
 
-        getImageWithPicassoOrStock(house.photoURL, imageView);
+        getImageWithPicassoOrStock(house.photoURL, favoriteImageView);
         streetAddress.setText(house.streetAddress + "\n" + house.city + ", " + house.state + " " + house.zipCode);
         beds.setText(house.beds);
 
@@ -104,9 +117,8 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        UserDatabaseService userDatabaseService = MainApplication.getUserDatabaseService();
-
-        String viewID = Integer.toString(v.getId());
-        userDatabaseService.removeFavoriteHouse(viewID);
+        int index = v.getId();
+        Bundle bundle = DetailFragment.createArgsBundleForDetailView(listOfFavoriteHouses.get(index));
+        Navigation.findNavController(getView()).navigate(R.id.navigation_detail_view, bundle);
     }
 }
