@@ -7,10 +7,19 @@
     tools:context=".ui.search.MapFragment"
     tools:ignore="MergeRootFrame">
 
+    <Button
+        android:id="@+id/web_view_add_to_favorites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        tools:text="@string/add_to_favorites" />
+
     <WebView
         android:id="@+id/web_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+
+    </WebView>
 </FrameLayout>
 
 
