@@ -36,6 +36,7 @@ dependencies {
     api 'com.github.ittianyu:BottomNavigationViewEx:2.0.2'
 
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation "com.squareup.okhttp3:okhttp:4.7.2"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
