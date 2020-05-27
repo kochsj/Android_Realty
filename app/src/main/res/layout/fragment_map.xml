@@ -11,9 +11,14 @@
         android:id="@+id/web_view_add_to_favorites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/bottom_nav_bar_height"
+        android:background="@android:color/holo_red_light"
+        android:ellipsize="none"
         android:onClick="onClick"
-        tools:text="@string/add_to_favorites" />
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/add_to_favorites" />
 
     <WebView
         android:id="@+id/web_view"
