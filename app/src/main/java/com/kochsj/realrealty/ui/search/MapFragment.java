@@ -2,6 +2,7 @@ package com.kochsj.realrealty.ui.search;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +15,35 @@ import androidx.fragment.app.Fragment;
 import com.kochsj.realrealty.R;
 
 
-public class MapFragment extends Fragment {
+public class MapFragment extends Fragment implements View.OnClickListener {
     private View root;
+    private WebView mWebView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.root = inflater.inflate(R.layout.fragment_map, container, false);
-        WebView myWebView = (WebView) root.findViewById(R.id.web_view);
-        myWebView.setWebViewClient(new WebViewClient());
-        myWebView.loadUrl("https://www.zillow.com/homes");
+        root.findViewById(R.id.web_view_add_to_favorites).setOnClickListener(this);
+        mWebView = (WebView) root.findViewById(R.id.web_view);
+        mWebView.setWebViewClient(new WebViewClient());
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.getSettings().setSupportZoom(true);
+        mWebView.getSettings().setBuiltInZoomControls(true);
+        mWebView.getSettings().setLoadWithOverviewMode(true);
+        mWebView.getSettings().setUseWideViewPort(true);
+//        mWebView.getSettings().setPluginsEnabled(true);
+        mWebView.getSettings().setDomStorageEnabled(true);
+        mWebView.getSettings().setDomStorageEnabled(true);
+        mWebView.loadUrl("https://www.zillow.com/homes");
 
         return root;
+    }
+
+    @Override
+    public void onClick(View v) {
+//        https://www.zillow.com/homedetails/4011-N-Frace-Ave-Tacoma-WA-98407/49340155_zpid/
+        String url = mWebView.getUrl();
+        Log.d("TAG", "onClick: " + url);
+
     }
 }
 
