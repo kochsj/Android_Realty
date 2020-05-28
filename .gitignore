@@ -1,6 +1,7 @@
 *.iml
 .gradle
 /local.properties
+/app/src/main/java/com/kochsj/realrealty/ui
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
