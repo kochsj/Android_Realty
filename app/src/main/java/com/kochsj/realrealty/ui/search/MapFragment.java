@@ -67,19 +67,8 @@ public class MapFragment extends Fragment implements View.OnClickListener {
         Log.d("TAG", "onClick: " + address);
         Log.d("TAG", "onClick: " + zpid);
 
-        try {
-            realtyMoleAPIService.getLocationData(address);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-//        try {
-//            String response = realtyMoleAPIService.getLocationData(address);
-////            Log.d("TAG", "onClick: response " +response);
-//            Log.d("TAG", "onClick: response.body" + response);
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+//        String locationData = realtyMoleAPIService.getLocationData(address);
+        realtyMoleAPIService.getLocationData(address);
 
     }
 }
