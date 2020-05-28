@@ -15,6 +15,9 @@ import androidx.fragment.app.Fragment;
 import com.kochsj.realrealty.R;
 import com.kochsj.realrealty.services.RealtyMoleAPIService;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -67,8 +70,11 @@ public class MapFragment extends Fragment implements View.OnClickListener {
         Log.d("TAG", "onClick: " + address);
         Log.d("TAG", "onClick: " + zpid);
 
-//        String locationData = realtyMoleAPIService.getLocationData(address);
-        realtyMoleAPIService.getLocationData(address);
+        try {
+            JSONObject locationJSON = realtyMoleAPIService.getLocationData(address);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 }
