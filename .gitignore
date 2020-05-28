@@ -1,7 +1,9 @@
 *.iml
 .gradle
+/app/src/main/AndroidManifest.xml
 /local.properties
 /app/src/main/java/com/kochsj/realrealty/ui
+/app/src/main/java/com/kochsj/realrealty/services
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
