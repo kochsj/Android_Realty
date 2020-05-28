@@ -90,10 +90,13 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
 
         ImageView favoriteImageView = tile.findViewById(R.id.favorite_image_view);
         favoriteImageView.setOnClickListener(this);
-        favoriteImageView.setId(index);
+        favoriteImageView.setContentDescription(String.valueOf(index));
+//        favoriteImageView.setId(index);
 
         Button removeFromFavoritesButton = tile.findViewById(R.id.dismiss);
-        removeFromFavoritesButton.setId(Integer.parseInt(house.zpid));
+        removeFromFavoritesButton.setOnClickListener(this);
+        removeFromFavoritesButton.setContentDescription(house.zpid);
+//        removeFromFavoritesButton.setId(Integer.parseInt(house.zpid));
 
         TextView streetAddress = tile.findViewById(R.id.favorite_house_street_Address);
         TextView beds = tile.findViewById(R.id.favorite_house_beds);
@@ -115,10 +118,23 @@ public class FavoritesFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    private void removeFavorite(View view) {
+        String viewID = (String) view.getContentDescription();
+        userDatabaseService.removeFavoriteHouse(viewID);
+        Navigation.findNavController(view).navigate(R.id.navigation_favorites);
+    }
+
     @Override
     public void onClick(View v) {
-        int index = v.getId();
-        Bundle bundle = DetailFragment.createArgsBundleForDetailView(listOfFavoriteHouses.get(index));
-        Navigation.findNavController(getView()).navigate(R.id.navigation_detail_view, bundle);
+        switch (v.getId()){
+            case (R.id.dismiss):
+                removeFavorite(v);
+                break;
+            case (R.id.favorite_image_view):
+                String index = (String)v.getContentDescription();
+                Bundle bundle = DetailFragment.createArgsBundleForDetailView(listOfFavoriteHouses.get(Integer.parseInt(index)));
+                Navigation.findNavController(getView()).navigate(R.id.navigation_detail_view, bundle);
+                break;
+        }
     }
 }

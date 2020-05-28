@@ -248,9 +248,11 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
             final UserDatabaseService userDatabaseService = new UserDatabaseService(userID);
             MainApplication.setUserDatabaseService(userDatabaseService);
 
+            // Toggle 1
+            // if errors in auth prevent emulator navigation
 //            startActivity(intent);
 
-
+            // Toggle 2
             userDatabaseService.getUserData().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -281,7 +283,6 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
 
         } else {
             mBinding.status.setText(R.string.signed_out);
-//            mBinding.detail.setText(null);
 
             mBinding.emailPasswordButtons.setVisibility(View.VISIBLE);
             mBinding.emailPasswordFields.setVisibility(View.VISIBLE);

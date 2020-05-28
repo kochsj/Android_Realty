@@ -8,10 +8,8 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.Navigation;
 
 import com.kochsj.realrealty.MainApplication;
-import com.kochsj.realrealty.R;
 import com.kochsj.realrealty.services.UserDatabaseService;
 
 public class BaseActivity extends AppCompatActivity {
@@ -43,12 +41,7 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void removeFavorite(View view) {
-        String viewID = Integer.toString(view.getId());
-//        Log.d("TAG", "removeFavorite: " + viewID);
-        userDatabaseService.removeFavoriteHouse(viewID);
-        Navigation.findNavController(view).navigate(R.id.navigation_favorites);
-    }
+
 
 //    public void navigateToDetailView(View view) {
 //
