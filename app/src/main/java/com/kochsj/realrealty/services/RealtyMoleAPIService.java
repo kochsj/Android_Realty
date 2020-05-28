@@ -1,6 +1,8 @@
 package com.kochsj.realrealty.services;
 
-import com.squareup.okhttp.Call;
+import android.util.Log;
+
+import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -8,8 +10,6 @@ import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
-
-import javax.security.auth.callback.Callback;
 
 
 public class RealtyMoleAPIService {
@@ -38,11 +38,13 @@ public class RealtyMoleAPIService {
 //            return "";
 //        }
         client.newCall(request).enqueue(new Callback() {
-            @Override public void onFailure(Call call, IOException e) {
+            @Override
+            public void onFailure(Request request, IOException e) {
                 e.printStackTrace();
             }
 
-            @Override public void onResponse(Call call, Response response) throws IOException {
+            @Override
+            public void onResponse(Response response) throws IOException {
                 try (ResponseBody responseBody = response.body()) {
                     if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
 
@@ -51,10 +53,30 @@ public class RealtyMoleAPIService {
                         System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
                     }
 
-                    System.out.println(responseBody.string());
+                    Log.d("TAG", "onResponse: "+ responseBody.string());
                 }
             }
         });
+
+
+//                new Callback() {
+//            @Override public void onFailure(Call call, IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            @Override public void onResponse(Call call, Response response) throws IOException {
+//                try (ResponseBody responseBody = response.body()) {
+//                    if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+//
+//                    Headers responseHeaders = response.headers();
+//                    for (int i = 0, size = responseHeaders.size(); i < size; i++) {
+//                        System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
+//                    }
+//
+//                    System.out.println(responseBody.string());
+//                }
+//            }
+//        });
     }
 
 }
