@@ -76,7 +76,7 @@ public class RealtyMoleAPIService {
                     String jsonData = responseBody.string();
                     Log.d("TAG", "onResponse: "+ jsonData);
 
-                    JSONObject jsonObject = new JSONObject(jsonData.toString());
+                    JSONObject jsonObject = new JSONObject(jsonData);
 
                     Log.d("TAG", "onResponse: json object: " +jsonObject);
                     Log.d("TAG", "onResponse: json object.state " + jsonObject.getString("state"));
