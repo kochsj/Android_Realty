@@ -1,5 +1,8 @@
 package com.kochsj.realrealty.models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -76,5 +79,32 @@ public class House implements Comparable<House> {
     @Override
     public int compareTo(House h) {
         return Long.compare(getTimeStamp(), h.getTimeStamp());
+    }
+
+    public static House houseFromJsonObject(JSONObject jsonObject, String zpid) throws JSONException {
+        String streetAddress = jsonObject.getString("addressLine1");
+        String city = jsonObject.getString("city");
+        String state = jsonObject.getString("state");
+        String zipCode = jsonObject.getString("zipCode");
+        String photoURL = "";
+        String beds = String.valueOf(jsonObject.getInt("bedrooms"));
+        String baths = String.valueOf(jsonObject.getInt("bathrooms"));
+        double latitude = jsonObject.getDouble("latitude");
+        double longitude = jsonObject.getDouble("longitude");
+
+        return new House(
+                zpid,
+                streetAddress,
+                city,
+                state,
+                zipCode,
+                photoURL,
+                beds,
+                baths,
+                latitude,
+                longitude
+        );
+
+
     }
 }

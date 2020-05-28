@@ -12,7 +12,9 @@ import android.webkit.WebViewClient;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.kochsj.realrealty.MainApplication;
 import com.kochsj.realrealty.R;
+import com.kochsj.realrealty.models.House;
 import com.kochsj.realrealty.services.RealtyMoleAPIService;
 
 import org.json.JSONException;
@@ -72,6 +74,9 @@ public class MapFragment extends Fragment implements View.OnClickListener {
 
         try {
             JSONObject locationJSON = realtyMoleAPIService.getLocationData(address);
+            House house = House.houseFromJsonObject(locationJSON, zpid);
+            MainApplication.userDatabaseService.addFavoriteHouseToUsersFavorites(house);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
