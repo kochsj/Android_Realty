@@ -13,15 +13,23 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.kochsj.realrealty.R;
+import com.kochsj.realrealty.services.RealtyMoleAPIService;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class MapFragment extends Fragment implements View.OnClickListener {
     private View root;
     private WebView mWebView;
 
+    private RealtyMoleAPIService realtyMoleAPIService;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.root = inflater.inflate(R.layout.fragment_map, container, false);
+        this.realtyMoleAPIService = new RealtyMoleAPIService();
+
         root.findViewById(R.id.web_view_add_to_favorites).setOnClickListener(this);
         mWebView = (WebView) root.findViewById(R.id.web_view);
         mWebView.setWebViewClient(new WebViewClient());
@@ -38,11 +46,40 @@ public class MapFragment extends Fragment implements View.OnClickListener {
         return root;
     }
 
+    public static String get_match(String s, String p) {
+        // returns first match of p in s for first group in regular expression
+        Matcher m = Pattern.compile(p).matcher(s);
+        return m.find() ? m.group() : "";
+    }
+
     @Override
     public void onClick(View v) {
 //        https://www.zillow.com/homedetails/4011-N-Frace-Ave-Tacoma-WA-98407/49340155_zpid/
         String url = mWebView.getUrl();
         Log.d("TAG", "onClick: " + url);
+
+        String zpidParam = get_match(url, "/\\d{1,12}_zpid/");
+        String addressParam = get_match(url, "/\\d{1,10}(.*?)\\d{5}");
+
+        String address = addressParam.substring(1);
+        String zpid = get_match(zpidParam, "\\d{1,12}");
+
+        Log.d("TAG", "onClick: " + address);
+        Log.d("TAG", "onClick: " + zpid);
+
+        try {
+            realtyMoleAPIService.getLocationData(address);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        try {
+//            String response = realtyMoleAPIService.getLocationData(address);
+////            Log.d("TAG", "onClick: response " +response);
+//            Log.d("TAG", "onClick: response.body" + response);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }
