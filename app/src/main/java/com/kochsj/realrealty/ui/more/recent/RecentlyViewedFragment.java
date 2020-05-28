@@ -27,6 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecentlyViewedFragment extends Fragment implements View.OnClickListener {
+
+    // TODO: remove recently viewed or refac
+
     private RecentlyViewedModel recentlyViewedModel;
     private ViewGroup recentlyViewedContainer;
     private List<House> listOfRecentlyViewedHouses = new ArrayList<House>();
