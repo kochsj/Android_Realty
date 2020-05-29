@@ -1,4 +1,4 @@
-package com.kochsj.realrealty.depracated;
+package com.kochsj.realrealty.deprecated;
 
 
 

@@ -15,7 +15,9 @@
     <string name="firebase_status_fmt">Firebase UID: %s</string>
     <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
     <string name="auth_failed">Auth Failed</string>
-
+    
+    <string name="favorites_tile_full_address">%1$s\n%2$s, %3$s %4$s</string>
+    <string name="favorites_tile_detail_snapshot">Beds: %1$s\tBaths: %2$s\t%3$s</string>
 
     <string name="title_home">Home</string>
     <string name="title_favorites">Favorites</string>

@@ -17,23 +17,47 @@ public class House implements Comparable<House> {
     public String photoURL;
     public String beds;
     public String baths;
+    public String squareFootage;
+    public String lotSize;
+    public String yearBuilt;
+    public String propertyType;
     public long timeStamp;
     public double latitude;
     public double longitude;
 
-    public House(String zpid, String streetAddress, String city, String state, String zipCode, String photoURL, String beds, String baths, double latitude, double longitude){
-        this.zpid = zpid;
-        this.streetAddress = streetAddress;
-        this.city = city;
-        this.state =state;
-        this.zipCode = zipCode;
-        this.photoURL = photoURL;
-        this.beds = beds;
-        this.baths = baths;
-        this.timeStamp = Calendar.getInstance().getTimeInMillis();
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
+    public House(
+            String zpid,
+            String streetAddress,
+            String city,
+            String state,
+            String zipCode,
+            String photoURL,
+            String beds,
+            String baths,
+            String squareFootage,
+            String lotSize,
+            String yearBuilt,
+            String propertyType,
+            double latitude,
+            double longitude
+        )
+        {
+            this.zpid = zpid;
+            this.streetAddress = streetAddress;
+            this.city = city;
+            this.state =state;
+            this.zipCode = zipCode;
+            this.photoURL = photoURL;
+            this.beds = beds;
+            this.baths = baths;
+            this.squareFootage = squareFootage;
+            this.lotSize =lotSize;
+            this.yearBuilt = yearBuilt;
+            this.propertyType = propertyType;
+            this.timeStamp = Calendar.getInstance().getTimeInMillis();
+            this.latitude = latitude;
+            this.longitude = longitude;
+        }
 
     public long getTimeStamp() {
         return timeStamp;
@@ -52,6 +76,10 @@ public class House implements Comparable<House> {
         map.put("photo_url", photoURL);
         map.put("beds", beds);
         map.put("baths", baths);
+        map.put("square_footage", squareFootage);
+        map.put("lot_size", lotSize);
+        map.put("year_built", yearBuilt);
+        map.put("property_type", propertyType);
         map.put("time_stamp", timeStamp);
         map.put("latitude", latitude);
         map.put("longitude", longitude);
@@ -60,20 +88,23 @@ public class House implements Comparable<House> {
     }
 
     public String[] detailViewStringArrayFromHouse() {
-        String[] stringArray = new String[11];
+        String[] stringArray = new String[15];
 
-        stringArray[0] = this.streetAddress;
-        stringArray[1] = this.city;
-        stringArray[2] = this.state;
-        stringArray[3] = this.zipCode;
-        stringArray[4] = this.beds;
-        stringArray[5] = this.baths;
-        stringArray[6] = this.photoURL;
-
-        stringArray[7] = this.zpid;
-        stringArray[8] = Long.toString(this.timeStamp);
-        stringArray[9] = Double.toString(this.latitude);
-        stringArray[10] = Double.toString(this.longitude);
+        stringArray[0] = this.zpid;
+        stringArray[1] = this.streetAddress;
+        stringArray[2] = this.city;
+        stringArray[3] = this.state;
+        stringArray[4] = this.zipCode;
+        stringArray[5] = this.photoURL;
+        stringArray[6] = this.beds;
+        stringArray[7] = this.baths;
+        stringArray[8] = this.squareFootage;
+        stringArray[9] = this.lotSize;
+        stringArray[10] = this.yearBuilt;
+        stringArray[11] = this.propertyType;
+        stringArray[12] = Long.toString(this.timeStamp);
+        stringArray[13] = Double.toString(this.latitude);
+        stringArray[14] = Double.toString(this.longitude);
 
         return stringArray;
     }
@@ -91,6 +122,10 @@ public class House implements Comparable<House> {
         photoURL = photoURL != null ? photoURL : "";
         String beds = String.valueOf(jsonObject.getInt("bedrooms"));
         String baths = String.valueOf(jsonObject.getInt("bathrooms"));
+        String squareFootage = String.valueOf(jsonObject.getInt("squareFootage"));
+        String lotSize = String.valueOf(jsonObject.getInt("lotSize"));
+        String yearBuilt = String.valueOf(jsonObject.getInt("yearBuilt"));
+        String propertyType = jsonObject.getString("propertyType");
         double latitude = jsonObject.getDouble("latitude");
         double longitude = jsonObject.getDouble("longitude");
 
@@ -103,6 +138,10 @@ public class House implements Comparable<House> {
                 photoURL,
                 beds,
                 baths,
+                squareFootage,
+                lotSize,
+                yearBuilt,
+                propertyType,
                 latitude,
                 longitude
         );
