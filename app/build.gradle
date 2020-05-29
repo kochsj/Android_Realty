@@ -29,11 +29,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
 }
 
 dependencies {
     api 'com.github.ittianyu:BottomNavigationViewEx:2.0.2'
+
+
+    implementation 'io.apisense:rhino-android:1.0'
 
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation "com.squareup.okhttp3:okhttp:4.7.2"
