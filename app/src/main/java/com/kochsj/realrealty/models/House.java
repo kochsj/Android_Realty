@@ -1,5 +1,7 @@
 package com.kochsj.realrealty.models;
 
+import androidx.annotation.Nullable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -81,12 +83,12 @@ public class House implements Comparable<House> {
         return Long.compare(getTimeStamp(), h.getTimeStamp());
     }
 
-    public static House houseFromJsonObject(JSONObject jsonObject, String zpid) throws JSONException {
+    public static House houseFromJsonObject(JSONObject jsonObject, String zpid, @Nullable String photoURL) throws JSONException {
         String streetAddress = jsonObject.getString("addressLine1");
         String city = jsonObject.getString("city");
         String state = jsonObject.getString("state");
         String zipCode = jsonObject.getString("zipCode");
-        String photoURL = "";
+        photoURL = photoURL != null ? photoURL : "";
         String beds = String.valueOf(jsonObject.getInt("bedrooms"));
         String baths = String.valueOf(jsonObject.getInt("bathrooms"));
         double latitude = jsonObject.getDouble("latitude");
