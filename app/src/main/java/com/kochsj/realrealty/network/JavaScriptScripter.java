@@ -30,17 +30,18 @@ public class JavaScriptScripter {
      *    that might be employed in the provided JavaScript script.  This map
      *    may be null if no input parameters are expected in the script.
      */
-    public static void setTimeout(Runnable runnable, int delay){
-        new Thread(() -> {
-            try {
-                Thread.sleep(delay);
-                runnable.run();
-            }
-            catch (Exception e){
-                System.err.println(e);
-            }
-        }).start();
+    public static void setTimeout(Runnable runnable, int delay, Thread thread){
+        try {
+            thread.sleep(delay);
+            runnable.run();
+        }
+        catch (Exception e){
+            System.err.println(e);
+        }
+
     }
+
+
 
     public static Object processArbitraryJavaScript(
             final String javaScriptCodeToProcess,
