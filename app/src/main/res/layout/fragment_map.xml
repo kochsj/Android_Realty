@@ -20,6 +20,15 @@
         android:paddingRight="10dp"
         android:text="@string/add_to_favorites" />
 
+    <Button
+        android:id="@+id/checkUrl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="60dp"
+        android:onClick="onClick"
+        android:text="checkUrl" />
+
     <WebView
         android:id="@+id/web_view"
         android:layout_width="match_parent"
