@@ -24,6 +24,12 @@
     <string name="title_profile">Profile</string>
     <string name="title_chat">Chat</string>
     <string name="title_more">More</string>
+<!--  Morgage Calculator  -->
+    <string name="calculate">Calculate</string>
+    <string name="total_loan_amount">total loan amount</string>
+    <string name="annual_interest_rate">annual interest rate</string>
+    <string name="loan_duration_years">loan duration (years)</string>
+
 
     <string name="title_profile_house">My House</string>
     <string name="title_profile_agent">My Agent</string>
