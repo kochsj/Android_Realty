@@ -43,16 +43,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="our team" />
+<!--        <Button-->
+<!--            android:id="@+id/more_recently_viewed_button"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="recently viewed" />-->
         <Button
-            android:id="@+id/more_recently_viewed_button"
+            android:id="@+id/more_zillow_link"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="recently viewed" />
-        <Button
-            android:id="@+id/more_settings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="settings" />
+            android:text="zillow" />
         <Button
             android:id="@+id/more_sign_out_button"
             android:layout_width="match_parent"
