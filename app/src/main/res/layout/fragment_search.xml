@@ -4,7 +4,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.search.MapFragment"
+    android:background="@drawable/border"
+    tools:context=".ui.search.SearchFragment"
     tools:ignore="MergeRootFrame">
 
     <Button
@@ -13,21 +14,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="@dimen/bottom_nav_bar_height"
-        android:background="@android:color/holo_red_light"
+        android:background="@drawable/border"
         android:ellipsize="none"
         android:onClick="onClick"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="@string/add_to_favorites" />
-
-    <Button
-        android:id="@+id/checkUrl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="60dp"
-        android:onClick="onClick"
-        android:text="checkUrl" />
+        android:paddingLeft="31dp"
+        android:paddingTop="10dp"
+        android:paddingRight="31dp"
+        android:text="@string/add_to_favorites"
+        android:textColor="@color/twitter_blue" />
 
     <WebView
         android:id="@+id/web_view"
@@ -54,7 +48,7 @@
 <!--        android:layout_height="match_parent"/>-->
 
 <!--&lt;!&ndash;    <FrameLayout&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/fragment_map"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/fragment_search"&ndash;&gt;-->
 <!--&lt;!&ndash;        android:name="com.google.android.gms.maps.SupportMapFragment"&ndash;&gt;-->
 <!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
 <!--&lt;!&ndash;        android:layout_height="match_parent"&ndash;&gt;-->
@@ -64,7 +58,7 @@
 <!--&lt;!&ndash;        app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
 <!--&lt;!&ndash;        app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
 <!--&lt;!&ndash;        app:layout_constraintVertical_bias="0.0"&ndash;&gt;-->
-<!--&lt;!&ndash;        tools:context="com.kochsj.realrealty.ui.search.MapFragment" />&ndash;&gt;-->
+<!--&lt;!&ndash;        tools:context="com.kochsj.realrealty.ui.search.SearchFragment" />&ndash;&gt;-->
 
 
 <!--</androidx.constraintlayout.widget.ConstraintLayout>-->

@@ -12,13 +12,13 @@ package com.kochsj.realrealty.deprecated;
 //    @Override
 //    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //
-//        View root = inflater.inflate(R.layout.fragment_map, container, false);
-//        supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.fragment_map);
+//        View root = inflater.inflate(R.layout.fragment_search, container, false);
+//        supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.fragment_search);
 //        if (supportMapFragment == null) {
 //            FragmentManager fragmentManager = getFragmentManager();
 //            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 //            supportMapFragment = SupportMapFragment.newInstance();
-//            fragmentTransaction.replace(R.id.fragment_map, supportMapFragment).commit();
+//            fragmentTransaction.replace(R.id.fragment_search, supportMapFragment).commit();
 //        }
 //
 //        supportMapFragment.getMapAsync(this);
