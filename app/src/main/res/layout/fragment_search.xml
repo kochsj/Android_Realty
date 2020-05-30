@@ -21,7 +21,7 @@
         android:paddingTop="10dp"
         android:paddingRight="31dp"
         android:text="@string/add_to_favorites"
-        android:textColor="@color/twitter_blue" />
+        android:textColor="@color/colorPrimary" />
 
     <WebView
         android:id="@+id/web_view"

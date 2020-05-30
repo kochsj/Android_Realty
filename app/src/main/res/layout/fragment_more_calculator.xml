@@ -32,6 +32,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/more_calculator_total_loan_amount"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="total loan amount" />
@@ -52,6 +53,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/more_calculator_apr"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="annual interest rate" />
@@ -71,6 +73,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/more_calculator_loan_duration"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="loan duration (years)" />
