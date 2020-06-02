@@ -7,7 +7,6 @@
     <string name="email_password_title_text">Sign In</string>
     <string name="signed_out">Signed Out</string>
     <string name="sign_in">Sign In</string>
-    <string name="sign_out">Sign Out</string>
     <string name="create_account">Create Account</string>
     <string name="verify_email">Verify Email</string>
     <string name="reload">reload</string>
@@ -38,7 +37,7 @@
     <string name="title_mortgage_calculator">Mortgage Calculator</string>
 
     <string name="add_to_favorites">Add to favorites</string>
-    <!--Detail View-->
+<!--Detail View-->
     <string name="image_of_house">Image of House</string>
     <string name="beds">Beds: </string>
     <string name="baths">Baths: </string>
@@ -46,7 +45,12 @@
     <string name="lot_size">Lot Size: </string>
     <string name="year_built">Year Built: </string>
     <string name="property_type">Property Type: </string>
-
+<!--    More View   -->
+    <string name="mortgage_calculator">Mortgage Calculator</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="our_team">Our Team</string>
+    <string name="zillow">Zillow</string>
+    <string name="sign_out">Sign Out</string>
 
     <string name="filler_address">123 Main St \nSeattle, WA 98101</string>
     <string name="filler_beds">Beds: 2</string>

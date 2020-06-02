@@ -4,7 +4,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/border"
+    android:background="@drawable/add_to_favorites_border"
     tools:context=".ui.search.SearchFragment"
     tools:ignore="MergeRootFrame">
 
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="@dimen/bottom_nav_bar_height"
-        android:background="@drawable/border"
+        android:background="@drawable/add_to_favorites_border"
         android:ellipsize="none"
         android:onClick="onClick"
         android:paddingLeft="31dp"
